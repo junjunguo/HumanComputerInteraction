@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <TextField fx:id="url" layoutX="24.0" layoutY="23.0" prefHeight="26.0" prefWidth="571.0" text="http://static.panoramio.com/photos/large/" />
+      <TextField fx:id="filelocation" layoutX="24.0" layoutY="66.0" prefHeight="26.0" prefWidth="570.0" text="/Users/junjun/Dropbox/myweb/junjunguo.github.io/2015/images/bg" />
+      <TextField fx:id="filetype" layoutX="239.0" layoutY="111.0" prefHeight="26.0" prefWidth="192.0" text=".jpg" />
+      <Button layoutX="453.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleStartDownloadAction" prefHeight="26.0" prefWidth="139.0" text="Start download" />
+      <TextArea fx:id="filename" layoutX="24.0" layoutY="111.0" prefHeight="265.0" prefWidth="196.0" text="File name:101153714" />
+      <TextArea fx:id="process" layoutX="239.0" layoutY="168.0" prefHeight="208.0" prefWidth="353.0" text="Process:" />
+      <ProgressBar fx:id="pbs" layoutX="239.0" layoutY="148.0" prefHeight="20.0" prefWidth="353.0" progress="0.0" />
+   </children>
+</Pane>
