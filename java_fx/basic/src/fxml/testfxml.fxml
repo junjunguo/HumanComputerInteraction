@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Testfxml">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="596.0" BorderPane.alignment="CENTER">
+        <items>
+          <Button mnemonicParsing="false" onAction="#handleLeftImgAction" text="left" />
+            <Button mnemonicParsing="false" onAction="#handleRightImgAction" text="right" />
+            <Button mnemonicParsing="false" onAction="#handleCenterImgAction" text="center" />
+            <Button mnemonicParsing="false" onAction="#handleBottomImgAction" text="bottom" />
+            <Button mnemonicParsing="false" onAction="#handleUpcaseAction" text="toUpcase" />
+            <TextField fx:id="textField" prefHeight="26.0" prefWidth="276.0" text="type in:" />
+        </items>
+      </ToolBar>
+   </top>
+   <center>
+      <ImageView fx:id="imagecenter" fitHeight="213.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <ImageView fx:id="imageleft" fitHeight="210.0" fitWidth="175.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <ImageView fx:id="imageright" fitHeight="211.0" fitWidth="204.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <ImageView fx:id="imagebottom" fitHeight="150.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

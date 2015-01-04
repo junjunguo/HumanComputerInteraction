@@ -99,6 +99,8 @@ dataendringshendelser for "text"-egenskapen (eng: property) til tekstfeltet. En 
         root.setRight(centerText);
 
         Scene scene = new Scene(root, 500, 500);
+
+        scene.getStylesheets().add("css/interaktivitet.css");
         stage.setScene(scene);
         stage.setTitle("Interaktivitet");
         stage.show();
