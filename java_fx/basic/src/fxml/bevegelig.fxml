@@ -1,16 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Circle?>
-<Group layoutY="50">
-    <Circle layoutX="100" layoutY="20" radius="20" stroke="black" fill="white"/>
-    <Circle layoutX="112" layoutY="20" radius="2" stroke="black" fill="blue"/>
-    <Line layoutX="120" layoutY="20" startX="0" startY="-4" endX="3" endY="0" stroke="black"/>
-    <Line layoutX="120" layoutY="20" startX="3" startY="0" endX="0" endY="1" stroke="black"/>
-    <Line layoutX="100" layoutY="40" endX="0" endY="30" stroke="black"/>
-    <Group layoutX="100" layoutY="50">
-        <Line layoutY="0"  endX="-10" endY="10" stroke="black"/>
-        <Line layoutY="0"  endX= "10" endY="10" stroke="black"/>
-        <Line layoutY="20" endX="-10" endY="15" stroke="black"/>
-        <Line layoutY="20" endX= "10" endY="15" stroke="black"/>
-    </Group>
-</Group>
+<?import javafx.scene.control.Button?>
+
+<BorderPane minWidth="400" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="BevegeligController">
+    <top>
+        <Button onAction="#walk" text="Walk!" />
+    </top>
+    <center>
+        <Pane minHeight="600" minWidth="400">
+           <children>
+               <Group fx:id="stickMan">
+                  <children>
+                      <Circle fill="white" layoutX="100" layoutY="20" radius="20" stroke="black" />
+                      <Circle fx:id="eye" fill="blue" layoutX="112" layoutY="20" radius="2" stroke="black" />
+                      <Line endX="3" endY="0" layoutX="120" layoutY="20" startX="0" startY="-4" stroke="black" />
+                      <Line endX="0" endY="1" layoutX="120" layoutY="20" startX="3" startY="0" stroke="black" />
+                      <Line endX="0" endY="30" layoutX="100" layoutY="40" stroke="black" />
+                      <Group fx:id="armsAndLegs1" layoutX="100" layoutY="50" visible="true">
+                         <children>
+                             <Line endX="-5" endY="10" layoutY="0" stroke="black" />
+                             <Line endX="10" endY="10" layoutY="0" stroke="black" />
+                             <Line endX="-10" endY="15" layoutY="20" stroke="black" />
+                             <Line endX="5" endY="15" layoutY="20" stroke="black" />
+                         </children>
+                      </Group>
+                      <Group fx:id="armsAndLegs2" layoutX="100" layoutY="50" visible="false">
+                         <children>
+                             <Line endX="-10" endY="10" layoutY="0" stroke="black" />
+                             <Line endX="5" endY="10" layoutY="0" stroke="black" />
+                             <Line endX="-5" endY="15" layoutY="20" stroke="black" />
+                             <Line endX="10" endY="15" layoutY="20" stroke="black" />
+                         </children>
+                      </Group>
+                  </children>
+               </Group>
+           </children>
+        </Pane>
+    </center>
+</BorderPane>
