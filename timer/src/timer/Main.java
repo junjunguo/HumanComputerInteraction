@@ -1,4 +1,4 @@
-package Timer;
+package timer;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setController(new Controller());
         Parent root = fxmlLoader.load(getClass().getResource("timer.fxml"));
@@ -17,7 +17,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 360, 500));
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);
