@@ -6,10 +6,10 @@ Human–computer interaction (HCI)
 (Menneske-Maskin-Interaksjon MMI)
 --
 
-[Timer](timer/README.md)
+[Timer](timer/)
 --
 ![Timer](timer/timer.png)
 
-[Calculator](Calculator/README.md)
+[Calculator](Calculator/)
 --
 ![Calculator](Calculator/calculator.png)
