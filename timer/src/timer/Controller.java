@@ -37,6 +37,9 @@ public class Controller {
         minutesField = new TextField();
         secondsField = new TextField();
 
+//        System.out.println("controller called");
+
+        
         secondsField.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -48,7 +51,7 @@ public class Controller {
             }
         });
 
-        System.out.printf("controller called");
+//        System.out.printf("controller called 2");
         hoursField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -78,6 +81,8 @@ public class Controller {
 
     @FXML
     public void btnSet(ActionEvent event) {
+        System.out.println("getcursor: "+secondsField.getCursor());
+        
         if (!running) {
             if (!isInteger(hoursField.getText()) || !isInteger(minutesField.getText()) || !isInteger(secondsField.getText())) {
                 warning.setText("Input must be Integers !");

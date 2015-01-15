@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<!--
+  ~ Author GuoJunjun <junjunguo.com>, created on 15.1.2015.
+  -->
+
+<GridPane fx:controller="Calculator.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="0" vgap="0">
+    <columnConstraints>
+        <ColumnConstraints prefWidth="280"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints prefHeight="130"/>
+        <!--gridPane 1-->
+        <RowConstraints prefHeight="260"/>
+        <!--gridPane 2-->
+        <RowConstraints prefHeight="65"/>
+        <!--gridPane 3-->
+    </rowConstraints>
+    <children>
+        <!--gridPane 1-->
+        <GridPane GridPane.rowIndex="0" vgap="0" hgap="0" styleClass="display">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="280"></ColumnConstraints>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="40"></RowConstraints>
+                <RowConstraints prefHeight="90"></RowConstraints>
+            </rowConstraints>
+            <GridPane GridPane.rowIndex="0">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="120"></ColumnConstraints>
+                    <ColumnConstraints prefWidth="40"></ColumnConstraints>
+                    <ColumnConstraints prefWidth="120"></ColumnConstraints>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints prefHeight="40"></RowConstraints>
+                </rowConstraints>
+                <children>
+                    <Label GridPane.columnIndex="0" GridPane.rowIndex="0" fx:id="labelX" styleClass="labelup"
+                           prefHeight="40"
+                           prefWidth="120"
+                           GridPane.halignment="CENTER"
+                           GridPane.valignment="CENTER"/>
+                    <Label GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="labelO" styleClass="labelup"
+                           prefHeight="40"
+                           prefWidth="40"
+                           GridPane.halignment="CENTER"
+                           GridPane.valignment="CENTER"/>
+                    <Label GridPane.columnIndex="2" GridPane.rowIndex="0" fx:id="labelY" styleClass="labelup"
+                           prefHeight="40"
+                           prefWidth="120"
+                           GridPane.halignment="CENTER"
+                           GridPane.valignment="CENTER"/>
+                </children>
+            </GridPane>
+            <GridPane GridPane.rowIndex="1">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="280"></ColumnConstraints>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints prefHeight="90"></RowConstraints>
+                </rowConstraints>
+                <children>
+                    <Label fx:id="label" prefHeight="90" prefWidth="280" GridPane.halignment="RIGHT"
+                           GridPane.valignment="BOTTOM"/>
+                </children>
+            </GridPane>
+        </GridPane>
+
+
+        <!--gridPane 2-->
+        <GridPane GridPane.rowIndex="1">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="70"></ColumnConstraints>
+                <!--column 1-->
+                <ColumnConstraints prefWidth="70"></ColumnConstraints>
+                <!--column 2-->
+                <ColumnConstraints prefWidth="70"></ColumnConstraints>
+                <!--column 3-->
+                <ColumnConstraints prefWidth="70"></ColumnConstraints>
+                <!--column 4-->
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="65"></RowConstraints>
+                <!--row 1-->
+                <RowConstraints prefHeight="65"></RowConstraints>
+                <!--row 2-->
+                <RowConstraints prefHeight="65"></RowConstraints>
+                <!--row 3-->
+                <RowConstraints prefHeight="65"></RowConstraints>
+                <!--row 4-->
+            </rowConstraints>
+            <children>
+                <!--row 1-->
+                <Button GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnC" prefHeight="65" prefWidth="70" text="C"/>
+                <Button GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnPDM" prefHeight="65" prefWidth="70" text="+/-"/>
+                <Button GridPane.rowIndex="0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnMod" prefHeight="65" prefWidth="70" text="mod"/>
+                <Button GridPane.rowIndex="0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnDivide" prefHeight="65" prefWidth="70" text="÷"
+                        styleClass="btnStyle1"/>
+                <!--row 2-->
+                <Button GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn7" prefHeight="65" prefWidth="70" text="7"/>
+                <Button GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn8" prefHeight="65" prefWidth="70" text="8"/>
+                <Button GridPane.rowIndex="1" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn9" prefHeight="65" prefWidth="70" text="9"/>
+                <Button GridPane.rowIndex="1" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnMutiply" prefHeight="65" prefWidth="70" text="x"
+                        styleClass="btnStyle1"/>
+                <!--row 3-->
+                <Button GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn4" prefHeight="65" prefWidth="70" text="4"/>
+                <Button GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn5" prefHeight="65" prefWidth="70" text="5"/>
+                <Button GridPane.rowIndex="2" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn6" prefHeight="65" prefWidth="70" text="6"/>
+                <Button GridPane.rowIndex="2" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnMinus" prefHeight="65" prefWidth="70" text="-"
+                        styleClass="btnStyle1"/>
+                <!--row 4-->
+                <Button GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn1" prefHeight="65" prefWidth="70" text="1"/>
+                <Button GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn2" prefHeight="65" prefWidth="70" text="2"/>
+                <Button GridPane.rowIndex="3" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn3" prefHeight="65" prefWidth="70" text="3"/>
+                <Button GridPane.rowIndex="3" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnPlus" prefHeight="65" prefWidth="70" text="+"
+                        styleClass="btnStyle1"/>
+            </children>
+        </GridPane>
+
+        <!--gridPane 3-->
+        <GridPane GridPane.rowIndex="2">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="140"></ColumnConstraints>
+                <!--column 1-->
+                <ColumnConstraints prefWidth="70"></ColumnConstraints>
+                <!--column 2-->
+                <ColumnConstraints prefWidth="70"></ColumnConstraints>
+                <!--column 3-->
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="65"></RowConstraints>
+                <!--row 1-->
+            </rowConstraints>
+            <children>
+                <Button GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btn0" prefHeight="65" prefWidth="140" text="0"/>
+                <Button GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnDot" prefHeight="65" prefWidth="70" text="."/>
+                <Button GridPane.rowIndex="0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                        GridPane.valignment="CENTER" onAction="#btnEqual" prefHeight="65" prefWidth="70" text="="
+                        styleClass="btnStyle1"/>
+            </children>
+        </GridPane>
+
+    </children>
+</GridPane>
