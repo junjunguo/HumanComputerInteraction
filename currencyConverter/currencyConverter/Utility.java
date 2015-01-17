@@ -6,22 +6,26 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /** Created by GuoJunjun <junjunguo.com> on 16.01.15. */
 
 public class Utility {
-    private Label currency1 = new Label();
-    private Label currency2 = new Label();
-    private Label currency3 = new Label();
-    private Label currency4 = new Label();
+    private static TextField exchange1 = new TextField();
+    private static Label     exchange2 = new Label();
+    private static Label     exchange3 = new Label();
+    private static Label     exchange4 = new Label();
+
+    private static String curreny1, curreny2, curreny3, curreny4;
+//    private static double inputValue;
 
     /**
      * @return a flow pane with all information in side
@@ -38,28 +42,53 @@ public class Utility {
     }
 
     private static GridPane GP1() {
-
-        GridPane gp1 = addGridPane();
-
-        return gp1;
+        final Label currency = new Label();
+        final ImageView imageView = new ImageView();
+        final ComboBox comboBox = Countries.addComboBox();
+        GridPane gp = addGridPane(true, null, comboBox, imageView, currency);
+        return gp;
     }
 
     private static GridPane GP2() {
-        GridPane gp2 = addGridPane();
+        final Label currency = new Label();
+        final ImageView imageView = new ImageView();
+        final ComboBox comboBox = Countries.addComboBox();
 
-        return gp2;
+        GridPane gp = addGridPane(false, exchange2, comboBox, imageView, currency);
+        return gp;
     }
 
     private static GridPane GP3() {
-        GridPane gp3 = addGridPane();
+        final Label currency = new Label();
+        final ImageView imageView = new ImageView();
+        final ComboBox comboBox = Countries.addComboBox();
 
-        return gp3;
+        GridPane gp = addGridPane(false, exchange3, comboBox, imageView, currency);
+        return gp;
     }
 
     private static GridPane GP4() {
-        GridPane gp4 = addGridPane();
+        final Label currency = new Label();
+        final ImageView imageView = new ImageView();
+        final ComboBox comboBox = Countries.addComboBox();
 
-        return gp4;
+        GridPane gp = addGridPane(false, exchange4, comboBox, imageView, currency);
+
+        // listener currency changed
+        comboBox.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                setExchangeImage(exchange4, imageView, newValue.toString());
+            }
+        });
+        //            Label exchange = new Label();
+        exchange4.setAlignment(Pos.CENTER_RIGHT);
+
+        //            restcbb(comboBox);
+        gp.add(exchange4, 2, 0);
+
+
+        return gp;
     }
 
     /**
@@ -67,42 +96,21 @@ public class Utility {
      *
      * @return a universal grid pane with general information
      */
-    private static GridPane addGridPane() {
-        GridPane grid = new GridPane();
-        grid.setPrefSize(360, 125);
-        grid.setStyle(
-                "-fx-background-color:  #BDA48A,#DBC0AD,#C9AF95;-fx-background-insets: 0,1,1;" +
-                "-fx-background-radius: 0,0,0");
-        //        grid.setStyle("-fx-border-color: rgb(210,180,160); -fx-border-insets: 0.5");
-        grid.setHgap(0);
-        grid.setVgap(0);
-        grid.setPadding(new Insets(20, 20, 20, 20));
-        grid.setAlignment(Pos.CENTER);
-        // set column rows:
-        ColumnConstraints col1 = new ColumnConstraints();
-        col1.setPrefWidth(90);
-        ColumnConstraints col2 = new ColumnConstraints();
-        col2.setPrefWidth(40);
-        ColumnConstraints col3 = new ColumnConstraints();
-        col3.setPrefWidth(230);
-        col3.setHalignment(HPos.RIGHT);
-        grid.getColumnConstraints().addAll(col1, col2, col3);
+    private static GridPane addGridPane(Boolean first, final Label exchange, final ComboBox comboBox, ImageView
+            imageView, final Label currency) {
+        GridPane grid = initGridPane();
 
         // column 1, row 1 ----------------->
-        ImageView imageView = new ImageView();
-
-        imageView.setFitWidth(65);
+        imageView.setFitWidth(64);
         imageView.setPreserveRatio(true);
         imageView.setSmooth(true);
         imageView.setCache(true);
         grid.add(imageView, 0, 0);
 
         //  column 2, row 1 ----------------->
-        Label exchange = new Label(); // for column 3
+        comboBox.getSelectionModel().select((int) (Math.random() * 18));
 
-        Label currency = new Label();
-        final ComboBox comboBox = Countries.addComboBox();
-        comboBox.getSelectionModel().select((int) Math.random() * 10);
+        // auto hide combo box
         currency.textProperty().bind(comboBox.getSelectionModel().selectedItemProperty());
         currency.visibleProperty().bind(comboBox.visibleProperty().not());
         comboBox.setVisible(false);
@@ -129,18 +137,98 @@ public class Utility {
                 }
             }
         });
+        if (first) {
+        } else {
+            //set exchange
+//            exchange.setText((getExchange(curreny1, comboBox.getValue().toString().substring(0,3), getInputValue())));
+        }
         grid.add(comboBox, 1, 0);
         grid.add(currency, 1, 0);
-        exchange.setText("0.0"); // for column 3
-        imageView.setImage(new Image("http://mw2.google.com/mw-panoramio/photos/medium/25721204.jpg"));//for column 1
-
-
-        //  column 3, row 1 ----------------->
-        exchange.setAlignment(Pos.CENTER_RIGHT);
-        exchange.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-        grid.add(exchange, 2, 0);
         return grid;
     }
 
+    /**
+     * init grid pane
+     *
+     * @return grid pane with 1 row & 3 columns
+     */
+    private static GridPane initGridPane() {
+        GridPane grid = new GridPane();
+        grid.setPrefSize(360, 125);
+        grid.setStyle(
+                "-fx-background-color:  #BDA48A,#DBC0AD,#C9AF95;-fx-background-insets: 0,1,1;" +
+                "-fx-background-radius: 0,0,0");
+        //        grid.setStyle("-fx-border-color: rgb(210,180,160); -fx-border-insets: 0.5");
+        grid.setHgap(0);
+        grid.setVgap(0);
+        grid.setPadding(new Insets(20, 20, 20, 20));
+        grid.setAlignment(Pos.CENTER);
+        // set column rows:
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setPrefWidth(90);
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setPrefWidth(60);
+        col2.setHalignment(HPos.CENTER);
+        ColumnConstraints col3 = new ColumnConstraints();
+        col3.setPrefWidth(210);
+        col3.setHalignment(HPos.RIGHT);
+        grid.getColumnConstraints().addAll(col1, col2, col3);
+        return grid;
+    }
 
+    /**
+     * @param fromCurrency
+     * @param toCurrency
+     * @param value
+     * @return calculated exchange result as a string
+     */
+    private static String getExchange(String fromCurrency, String toCurrency, double value) {
+        try {
+            JSONObject currencyrate = new JSONObject(JsonReader.getCurrency(fromCurrency, toCurrency));
+            System.out.println(currencyrate);
+
+        } catch (JSONException e) {
+            System.out.println(" getExchange: " + e);
+        }
+        return null;
+    }
+
+    /**
+     * get TextField value
+     *
+     * @return double value
+     */
+    private static double getInputValue() {
+        if (isDouble(exchange1.getText())) {
+            return Double.parseDouble(exchange1.getText());
+        }
+        return 0.0;
+    }
+
+    /**
+     * @param s a String
+     * @return true if String s is a number
+     */
+    private static boolean isDouble(String s) {
+        try {
+            Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * set image and exchange value in to the given variable
+     *
+     * @param exchange
+     * @param imageView
+     * @param item
+     */
+    private static void setExchangeImage(Label exchange, ImageView imageView, String item) {
+        String[] table = item.toString().split(" - ");
+        System.out.println("flags/" + table[2] + ".png");
+        imageView.setImage(new Image("flags/" + table[2] + ".png"));
+        exchange.setText(getExchange(curreny1, curreny2, getInputValue()));
+    }
 }
