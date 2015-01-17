@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class CurrencyConverter extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent gridPane = Utility.addFlowPane();
+        Parent gridPane = Program.addFlowPane();
 
         Scene scene = new Scene(gridPane,360,500);
         primaryStage.setTitle("Currency Converter");

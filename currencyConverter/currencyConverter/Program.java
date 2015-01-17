@@ -4,21 +4,27 @@ import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
+import javafx.util.Callback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.swing.plaf.basic.BasicColorChooserUI;
+import java.text.DecimalFormat;
+
 /** Created by GuoJunjun <junjunguo.com> on 16.01.15. */
 
-public class Utility {
+public class Program {
     private static       TextField exchange1 = new TextField();
     private static       Label     exchange2 = new Label();
     private static       Label     exchange3 = new Label();
@@ -28,10 +34,8 @@ public class Utility {
     private static final Label     currency3 = new Label();
     private static final Label     currency4 = new Label();
     private static       double    rate12    = 0, rate13 = 0, rate14 = 0;
-
-
-    //    private static String curreny1, curreny2, curreny3, curreny4;
-    //    private static double inputValue;
+    private static int           anumber = 0;
+    private static DecimalFormat df      = new DecimalFormat("#0.000");
 
     /**
      * @return a flow pane with all information in side
@@ -42,78 +46,87 @@ public class Utility {
         flow.setVgap(0);
         flow.setHgap(0);
         flow.setPrefWrapLength(720); // preferred width allows for two columns
-        flow.setStyle("-fx-background-color: #DBC0AD;");
+        flow.setStyle("-fx-background-color: #C6AC93;");
         flow.getChildren().addAll(GP1(), GP2(), GP3(), GP4());
         return flow;
     }
 
     private static GridPane GP1() {
-
+        exchange1.setFont(Font.font("-fx-font-family: sans-serif", 30));
+        exchange1.setStyle("-fx-text-fill: #C4554B; -fx-background-color: #CFB398 ");
         final ImageView imageView = new ImageView();
         final ComboBox comboBox = Countries.addComboBox();
         GridPane gp = addGridPane(comboBox, imageView, currency1);
-        //        String[] table = comboBox.getSelectionModel().getSelectedItem().toString().split(" - ");
-        //        System.out.println("flags/" + table[2] + ".png");
+        gp.setStyle("-fx-background-color: #CFB398");
         imageView.setImage(new
                                    Image(
                 "flags/" + comboBox.getSelectionModel().getSelectedItem().toString().split(" - " +
                                                                                            "")
                         [2] + ".png"));
-
-
         // listener currency changed
         comboBox.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                 String[] table = newValue.toString().split(" - ");
-                System.out.println("flags/" + table[2] + ".png");
                 imageView.setImage(new Image("flags/" + table[2] + ".png"));
-                exchange2.setText(getExchangeRate(currency1.getText().substring(0, 3),
-                                                  currency2.getText().substring(0, 3),
-                                                  getInputValue(), rate12));
-                exchange3.setText(getExchangeRate(currency1.getText().substring(0, 3), currency3.getText().substring(0,
-                                                                                                                     3),
-                                                  getInputValue(), rate13));
-                exchange4.setText(getExchangeRate(currency1.getText().substring(0, 3), currency4.getText().substring(0,
-                                                                                                                     3),
-                                                  getInputValue(), rate14));
+
+                rate12 = getExchangeRate(
+                        comboBox.getSelectionModel().getSelectedItem().toString()
+                                .substring(0, 3), currency2.getText().substring(0, 3));
+                exchange2.setText(df.format(rate12 *
+                                            getInputValue()) + "");
+
+                rate13 = getExchangeRate(
+                        comboBox.getSelectionModel().getSelectedItem().toString()
+                                .substring(0, 3), currency3.getText().substring(0, 3));
+                exchange3.setText(df.format(rate13 *
+                                            getInputValue()) + "");
+
+                rate14 = getExchangeRate(
+                        comboBox.getSelectionModel().getSelectedItem().toString()
+                                .substring(0, 3), currency4.getText().substring(0, 3));
+                exchange4.setText(df.format(rate14 *
+                                            getInputValue()) + "");
             }
         });
         exchange1.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                System.out.println(newValue);
                 if (isDouble(newValue)) {
                     double value = Double.parseDouble(newValue);
-                    System.out.println(rate12);
-                    System.out.println(newValue);
-                    String s1 = (value * rate12) + "";
-                    System.out.println(s1);
-                    exchange2.setText(s1);
-                    exchange3.setText((value * rate13) + "");
-                    exchange4.setText((value * rate14) + "");
-                    System.out.printf((value * rate14) + "");
+                    exchange2.setText(df.format(value * rate12));
+                    exchange3.setText(df.format(value * rate13));
+                    exchange4.setText(df.format(value * rate14));
                 }
             }
         });
-
         exchange1.setAlignment(Pos.CENTER_RIGHT);
         gp.add(exchange1, 2, 0);
         return gp;
     }
 
     private static GridPane GP2() {
+        exchange2.setFont(Font.font("-fx-font-family: sans-serif", 30));
+        exchange2.setTextFill(Paint.valueOf("#32281F"));
         final ImageView imageView = new ImageView();
         final ComboBox comboBox = Countries.addComboBox();
 
         GridPane gp = addGridPane(comboBox, imageView, currency2);
-        setExchangeImage(exchange2, imageView, comboBox.getSelectionModel().getSelectedItem().toString(), rate12);
-
+        imageView.setImage(new Image(
+                "flags/" + comboBox.getSelectionModel().getSelectedItem().toString().split(" - ")[2] + ".png"));
+        rate12 = getExchangeRate(currency1.getText().substring(0, 3),
+                                 comboBox.getSelectionModel().getSelectedItem().toString()
+                                         .substring(0, 3));
+        exchange2.setText(df.format(rate12 *
+                          getInputValue()) + "");
         // listener currency changed
         comboBox.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                setExchangeImage(exchange2, imageView, newValue.toString(), rate12);
+                imageView.setImage(new Image("flags/" + newValue.toString().split(" - ")[2] + ".png"));
+                rate12 = getExchangeRate(currency1.getText().substring(0, 3), newValue.toString().substring(0, 3));
+                exchange2.setText(df.format(rate12 *
+                                  getInputValue()) + "");
             }
         });
         exchange2.setAlignment(Pos.CENTER_RIGHT);
@@ -122,16 +135,26 @@ public class Utility {
     }
 
     private static GridPane GP3() {
+        exchange3.setFont(Font.font("-fx-font-family: sans-serif", 30));
+        exchange3.setTextFill(Paint.valueOf("#32281F"));
         final ImageView imageView = new ImageView();
         final ComboBox comboBox = Countries.addComboBox();
-
         GridPane gp = addGridPane(comboBox, imageView, currency3);
-        setExchangeImage(exchange3, imageView, comboBox.getSelectionModel().getSelectedItem().toString(), rate13);
+        imageView.setImage(new Image(
+                "flags/" + comboBox.getSelectionModel().getSelectedItem().toString().split(" - ")[2] + ".png"));
+        rate13 = getExchangeRate(currency1.getText().substring(0, 3),
+                                 comboBox.getSelectionModel().getSelectedItem().toString()
+                                         .substring(0, 3));
+        exchange3.setText(df.format(rate13 *
+                          getInputValue()) + "");
         // listener currency changed
         comboBox.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                setExchangeImage(exchange3, imageView, newValue.toString(), rate13);
+                imageView.setImage(new Image("flags/" + newValue.toString().split(" - ")[2] + ".png"));
+                rate13 = getExchangeRate(currency1.getText().substring(0, 3), newValue.toString().substring(0, 3));
+                exchange3.setText(df.format(rate13 *
+                                  getInputValue()) + "");
             }
         });
         exchange3.setAlignment(Pos.CENTER_RIGHT);
@@ -140,15 +163,27 @@ public class Utility {
     }
 
     private static GridPane GP4() {
+        exchange4.setFont(Font.font("-fx-font-family: sans-serif", 30));
+        exchange4.setTextFill(Paint.valueOf("#32281F"));
         final ImageView imageView = new ImageView();
         final ComboBox comboBox = Countries.addComboBox();
         GridPane gp = addGridPane(comboBox, imageView, currency4);
-        setExchangeImage(exchange4, imageView, comboBox.getSelectionModel().getSelectedItem().toString(), rate14);
+        imageView.setImage(new Image(
+                "flags/" + comboBox.getSelectionModel().getSelectedItem().toString().split(" - ")[2] + ".png"));
+        rate14 = getExchangeRate(currency1.getText().substring(0, 3),
+                                 comboBox.getSelectionModel().getSelectedItem().toString()
+                                         .substring(0, 3));
+        exchange4.setText(df.format(rate14 *
+                          getInputValue()) + "");
+
         // listener currency changed
         comboBox.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                setExchangeImage(exchange4, imageView, newValue.toString(), rate14);
+                imageView.setImage(new Image("flags/" + newValue.toString().split(" - ")[2] + ".png"));
+                rate14 = getExchangeRate(currency1.getText().substring(0, 3), newValue.toString().substring(0, 3));
+                exchange4.setText(df.format(rate14 *
+                                  getInputValue()) + "");
             }
         });
         exchange4.setAlignment(Pos.CENTER_RIGHT);
@@ -172,9 +207,42 @@ public class Utility {
         grid.add(imageView, 0, 0);
 
         //  column 2, row 1 ----------------->
-        comboBox.getSelectionModel().select((int) (Math.random() * 18));
 
+        comboBox.setCellFactory(
+                new Callback<ListView<String>, ListCell<String>>() {
+                    @Override public ListCell<String> call(ListView<String> param) {
+                        final ListCell<String> cell = new ListCell<String>() {
+                            {
+//                                super.setPrefWidth(360);
+                                
+                            }
+                            @Override public void updateItem(String item,
+                                                             boolean empty) {
+                                super.updateItem(item, empty);
+                                if (item != null) {
+                                    setText(item);
+                                    setTextFill(Paint.valueOf("#7c5d34"));
+
+//                                    setStyle("-fx-background-color: #C6AC93;" +
+//                                             "-fx-highlight-fill: #7C5D34;" +
+//                                             "-fx-highlight-text-fill: #C6BBAC;" +
+//                                             "");
+                                }
+                            }
+                        };
+                        return cell;
+                    }
+
+                });
+        
+        
+        
+        comboBox.getSelectionModel().select((int) (Math.random() * 3) + anumber);
+        anumber += 5;
         // auto hide combo box
+        currency.setFont(Font.font("-fx-font-family: sans-serif", 15));
+        currency.setTextFill(Paint.valueOf("#7c5d34"));
+
         currency.textProperty().bind(comboBox.getSelectionModel().selectedItemProperty());
         currency.visibleProperty().bind(comboBox.visibleProperty().not());
         comboBox.setVisible(false);
@@ -215,7 +283,7 @@ public class Utility {
         GridPane grid = new GridPane();
         grid.setPrefSize(360, 125);
         grid.setStyle(
-                "-fx-background-color:  #BDA48A,#DBC0AD,#C9AF95;-fx-background-insets: 0,1,1;" +
+                "-fx-background-color:  #BDA48A,#DBC0AD,#C6AC93;-fx-background-insets: 0,1,1;" +
                 "-fx-background-radius: 0,0,0");
         //        grid.setStyle("-fx-border-color: rgb(210,180,160); -fx-border-insets: 0.5");
         grid.setHgap(0);
@@ -246,7 +314,6 @@ public class Utility {
         try {
             return new JSONObject(JsonReader.getCurrency(fromCurrency, toCurrency)).getDouble("rate");
         } catch (JSONException e) {
-            System.out.println(" getExchangeRate: " + e);
         }
         return 0;
     }
@@ -274,21 +341,5 @@ public class Utility {
             return false;
         }
         return true;
-    }
-
-    /**
-     * set image , exchange value and the rate in to the given variable
-     *
-     * @param exchange  Label calculated exchange value
-     * @param imageView
-     * @param item      The selected item from combo box
-     */
-    private static void setExchangeImage(Label exchange, ImageView imageView, String item) {
-        String[] table = item.toString().split(" - ");
-        imageView.setImage(new Image("flags/" + table[2] + ".png"));
-
-        exchange.setText(
-                getExchangeRate(currency1.getText().substring(0, 3), item.substring(0, 3)) * getInputValue() + "");
-
     }
 }
