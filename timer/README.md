@@ -1,10 +1,24 @@
 Timer
 ==
-
-Use JavaFX, FXML,  CSS and JavaFX Scene Builder to build a Mobile like Timer
+Building tools:
+- JavaFX, FXML,  CSS and JavaFX Scene Builder
+ 
+IDE:
+ - IntelliJ
+ 
+ 
+User Interface:
+ --
+ 
+- Mobile like
 
 ![timer](timer.png)
 
+- Support both computer keyboard and mouse click input
+
+![timer](timer2.png)
+
+Notes:
 - Controller implements Initializble
     - initialize runs after root elements are processed.
 - TimeLine

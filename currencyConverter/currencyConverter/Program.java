@@ -8,18 +8,14 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-import javafx.util.Callback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.swing.plaf.basic.BasicColorChooserUI;
 import java.text.DecimalFormat;
 
 /** Created by GuoJunjun <junjunguo.com> on 16.01.15. */
@@ -118,7 +114,7 @@ public class Program {
                                  comboBox.getSelectionModel().getSelectedItem().toString()
                                          .substring(0, 3));
         exchange2.setText(df.format(rate12 *
-                          getInputValue()) + "");
+                                    getInputValue()) + "");
         // listener currency changed
         comboBox.valueProperty().addListener(new ChangeListener() {
             @Override
@@ -126,7 +122,7 @@ public class Program {
                 imageView.setImage(new Image("flags/" + newValue.toString().split(" - ")[2] + ".png"));
                 rate12 = getExchangeRate(currency1.getText().substring(0, 3), newValue.toString().substring(0, 3));
                 exchange2.setText(df.format(rate12 *
-                                  getInputValue()) + "");
+                                            getInputValue()) + "");
             }
         });
         exchange2.setAlignment(Pos.CENTER_RIGHT);
@@ -146,7 +142,7 @@ public class Program {
                                  comboBox.getSelectionModel().getSelectedItem().toString()
                                          .substring(0, 3));
         exchange3.setText(df.format(rate13 *
-                          getInputValue()) + "");
+                                    getInputValue()) + "");
         // listener currency changed
         comboBox.valueProperty().addListener(new ChangeListener() {
             @Override
@@ -154,7 +150,7 @@ public class Program {
                 imageView.setImage(new Image("flags/" + newValue.toString().split(" - ")[2] + ".png"));
                 rate13 = getExchangeRate(currency1.getText().substring(0, 3), newValue.toString().substring(0, 3));
                 exchange3.setText(df.format(rate13 *
-                                  getInputValue()) + "");
+                                            getInputValue()) + "");
             }
         });
         exchange3.setAlignment(Pos.CENTER_RIGHT);
@@ -174,7 +170,7 @@ public class Program {
                                  comboBox.getSelectionModel().getSelectedItem().toString()
                                          .substring(0, 3));
         exchange4.setText(df.format(rate14 *
-                          getInputValue()) + "");
+                                    getInputValue()) + "");
 
         // listener currency changed
         comboBox.valueProperty().addListener(new ChangeListener() {
@@ -183,7 +179,7 @@ public class Program {
                 imageView.setImage(new Image("flags/" + newValue.toString().split(" - ")[2] + ".png"));
                 rate14 = getExchangeRate(currency1.getText().substring(0, 3), newValue.toString().substring(0, 3));
                 exchange4.setText(df.format(rate14 *
-                                  getInputValue()) + "");
+                                            getInputValue()) + "");
             }
         });
         exchange4.setAlignment(Pos.CENTER_RIGHT);
@@ -207,36 +203,6 @@ public class Program {
         grid.add(imageView, 0, 0);
 
         //  column 2, row 1 ----------------->
-
-        comboBox.setCellFactory(
-                new Callback<ListView<String>, ListCell<String>>() {
-                    @Override public ListCell<String> call(ListView<String> param) {
-                        final ListCell<String> cell = new ListCell<String>() {
-                            {
-//                                super.setPrefWidth(360);
-                                
-                            }
-                            @Override public void updateItem(String item,
-                                                             boolean empty) {
-                                super.updateItem(item, empty);
-                                if (item != null) {
-                                    setText(item);
-                                    setTextFill(Paint.valueOf("#7c5d34"));
-
-//                                    setStyle("-fx-background-color: #C6AC93;" +
-//                                             "-fx-highlight-fill: #7C5D34;" +
-//                                             "-fx-highlight-text-fill: #C6BBAC;" +
-//                                             "");
-                                }
-                            }
-                        };
-                        return cell;
-                    }
-
-                });
-        
-        
-        
         comboBox.getSelectionModel().select((int) (Math.random() * 3) + anumber);
         anumber += 5;
         // auto hide combo box

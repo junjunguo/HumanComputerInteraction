@@ -13,3 +13,7 @@ Human–computer interaction (HCI)
 [Calculator](Calculator/)
 --
 ![Calculator](Calculator/calculator.png)
+
+[Currency Converter](currencyConverter/)
+--
+![Currency Converter](currencyConverter/currencyconverter2.png)

@@ -9,8 +9,9 @@ public class CurrencyConverter extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent gridPane = Program.addFlowPane();
-
+        
         Scene scene = new Scene(gridPane,360,500);
+        scene.getStylesheets().add("style.css");
         primaryStage.setTitle("Currency Converter");
         primaryStage.setScene(scene);
         primaryStage.show();

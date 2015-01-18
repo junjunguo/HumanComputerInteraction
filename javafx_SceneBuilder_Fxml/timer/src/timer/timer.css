@@ -1,0 +1,57 @@
+/*
+ * Created by GuoJunjun <junjunguo.com> on 16.1.2015.
+ *
+ * This file is part of timer
+ */
+
+.root {
+    -fx-background-color: rgb(60, 60, 60);
+    }
+
+.button {
+    /*-fx-background-color: rgb(100, 106, 118);*/
+    -fx-font-size: 25;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(rgb(109, 115, 128) 0%, rgb(80, 86, 99) 100%);
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    }
+
+.btnCancle {
+    -fx-background-color: linear-gradient(rgb(62, 62, 62) 0%, rgb(59, 59, 59) 100%),
+    linear-gradient(rgb(40, 40, 40), rgb(50, 50, 50)),
+    linear-gradient(rgb(119, 119, 119) 0%, rgb(67, 67, 67) 100%);
+    -fx-background-insets: 0, 1, 3;
+    -fx-background-radius: 7, 8, 9;
+    }
+
+.btnSet {
+    -fx-background-color: linear-gradient(rgb(62, 62, 62) 0%, rgb(59, 59, 59) 100%),
+    linear-gradient(rgb(40, 40, 40), rgb(50, 50, 50)),
+    linear-gradient(rgb(118, 144, 172) 0%, rgb(66, 92, 163) 100%);
+    -fx-background-insets: 0, 1, 3;
+    -fx-background-radius: 7, 8, 9;
+    }
+
+.btn10 {
+    -fx-background-color: linear-gradient(rgb(220, 222, 227) 0%, rgb(181, 185, 194) 100%);
+    }
+
+.btnDelete {
+    -fx-background-color: linear-gradient(rgb(220, 222, 227) 0%, rgb(181, 185, 194) 100%);
+    -fx-text-fill: #505663;
+    -fx-font-weight: bold;
+    }
+
+.text-field {
+    -fx-padding: 0;
+    -fx-background-color: rgb(50, 50, 50);
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #FFFFFF;
+    -fx-font-size: 46px;
+    -fx-label-padding: 0;
+    -fx-font-weight: bold;
+    }
+
+

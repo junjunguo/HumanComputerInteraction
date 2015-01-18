@@ -16,14 +16,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        System.out.println("start called");
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setController(new Controller());
         Parent root = fxmlLoader.load(getClass().getResource("timer.fxml"));
         primaryStage.setTitle("Timer");
         primaryStage.setScene(new Scene(root, 360, 500));
         primaryStage.show();
-        System.out.println("show stage called");
     }
 
     public static void main(String[] args) {

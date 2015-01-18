@@ -1,0 +1,21 @@
+.combo-box-popup .list-view {
+    -fx-background-color  : -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets : 0, 1;
+    -fx-effect            : dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 8, 0.0, 0, 0);
+
+    }
+
+.combo-box-popup .list-view .list-cell {
+    -fx-padding          : 4 0 4 5;
+    -fx-background-color : #C6AC93;
+    }
+
+.combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover {
+    -fx-background-color : #A6793F;
+    -fx-text-fill        : #FFDCAD;
+    }
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color : #7C5D34;
+    -fx-text-fill        : #C6BBAC;
+    }
