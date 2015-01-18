@@ -65,7 +65,9 @@
                 </rowConstraints>
                 <children>
                     <Label fx:id="label" prefHeight="90" prefWidth="280" GridPane.halignment="RIGHT"
-                           GridPane.valignment="BOTTOM"/>
+                           GridPane.valignment="BOTTOM" visible="true"/>
+                    <Label fx:id="warning" prefHeight="90" prefWidth="280" GridPane.halignment="CENTER"
+                           GridPane.valignment="BOTTOM" visible="false" styleClass="warning"/>
                 </children>
             </GridPane>
         </GridPane>
@@ -96,7 +98,8 @@
             <children>
                 <!--row 1-->
                 <Button GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.halignment="CENTER"
-                        GridPane.valignment="CENTER" onAction="#btnC" prefHeight="65" prefWidth="70" text="C"/>
+                        GridPane.valignment="CENTER" prefHeight="65" prefWidth="70" text="C"
+                        fx:id="btnC"/>
                 <Button GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                         GridPane.valignment="CENTER" onAction="#btnPDM" prefHeight="65" prefWidth="70" text="+/-"/>
                 <Button GridPane.rowIndex="0" GridPane.columnIndex="2" GridPane.halignment="CENTER"

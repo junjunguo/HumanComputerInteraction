@@ -4,14 +4,49 @@
 
 package Calculator;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller implements Initializable {
 
     private double x, y;
     private char operation = ' ';
+
+    @FXML
+    Button btnC;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        btnC.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 1) {
+                    String s = label.getText();
+                    if (s.length() > 0) {
+                        label.setText(s.substring(0, s.length() - 1));
+                    } else {
+                        initValue();
+                    }
+                }
+                if (event.getClickCount() == 2) {
+                    initValue();
+                }
+            }
+        });
+    }
+
+    @FXML
+    Label warning;
     @FXML
     Label label;
     @FXML
@@ -98,23 +133,16 @@ public class Controller {
 
     @FXML
     public void btnEqual(ActionEvent event) {
-        if (operation != ' ') {
+        if (operation == ' ') {
+            showWarning("No operation sign !", 2);
+        } else if (label.getText() == "") {
+            showWarning("No input found !", 2);
+        } else {
             setY(label.getText());
             label.setText((operate() + ""));
         }
     }
 
-    @FXML
-    public void btnC(ActionEvent event) {
-        String s = label.getText();
-        if (s.length() > 0) {
-            label.setText(s.substring(0, s.length() - 1));
-        } else {
-            labelX.setText("");
-            labelY.setText("");
-            labelO.setText("");
-        }
-    }
 
     @FXML
     public void btnDot(ActionEvent event) {
@@ -141,9 +169,11 @@ public class Controller {
      * @param x
      */
     public void setX(String x) {
-        this.x = Double.parseDouble(x);
-        label.setText("");
-        labelX.setText("x: " + x);
+        if (x != "") {
+            this.x = Double.parseDouble(x);
+            label.setText("");
+            labelX.setText("" + x);
+        }
     }
 
     /**
@@ -154,9 +184,11 @@ public class Controller {
      * @param y
      */
     public void setY(String y) {
-        this.y = Double.parseDouble(y);
-        label.setText("");
-        labelY.setText("y: " + y);
+        if (y != " ") {
+            this.y = Double.parseDouble(y);
+            label.setText("");
+            labelY.setText("" + y);
+        }
     }
 
     /**
@@ -167,11 +199,32 @@ public class Controller {
      * @param operation
      */
     public void setOperation(char operation) {
-        this.operation = operation;
-        String s = label.getText();
-        if (s.length() > 0) {
-            labelO.setText(operation + "");
-            setX(s);
+        //if first operation
+        if (labelO.getText() == "") {
+            System.out.println("first op");
+            this.operation = operation;
+            String s = label.getText();
+            if (s.length() > 0) {
+                labelO.setText(operation + "");
+                setX(s);
+            }
+        } else if (labelY.getText() != "") { //reuse result:
+            System.out.println("reuse result +");
+            setX(label.getText());
+            this.operation = operation;
+            label.setText("");
+        } else if (labelY.getText() == "" && label.getText() == "") {
+            showWarning(x + " " + operation + " ? (lack of input)", 1);
+
+        } else {// continue operation
+            System.out.println("continue op ...");
+            setY(label.getText());
+            if (labelX.getText() != "" && labelY.getText() != "") {
+                setX(operate() + "");
+                this.operation = operation;
+                labelY.setText("");
+                label.setText("");
+            }
         }
     }
 
@@ -199,18 +252,61 @@ public class Controller {
      * @return double result
      */
     private double operate() {
-        switch (operation) {
-            case '+':
-                return x + y;
-            case '-':
-                return x - y;
-            case '*':
-                return x * y;
-            case '/':
-                return x / y;
-            case '%':
-                return x % y;
+        if (x == 0 && operation == '/') {
+            showWarning("0 can not be divided !", 3);
+        } else {
+            switch (operation) {
+                case '+':
+                    return x + y;
+                case '-':
+                    return x - y;
+                case '*':
+                    return x * y;
+                case '/':
+                    return x / y;
+                case '%':
+                    return x % y;
+            }
         }
         return 0;
     }
+
+    /**
+     * send a warning text at input area.
+     *
+     * @param s       String s will be showing
+     * @param seconds duration in seconds
+     */
+    private void showWarning(String s, int seconds) {
+        label.setVisible(false);
+        warning.setVisible(true);
+        warning.setText(s);
+        FadeTransition fade = new FadeTransition(Duration.seconds(0.5), warning);
+        fade.setFromValue(1.0);
+        fade.setToValue(0.7);
+        fade.setCycleCount((2 * seconds));
+        fade.setAutoReverse(true);
+        fade.play();
+        fade.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                label.setVisible(true);
+                warning.setVisible(false);
+            }
+        });
+    }
+
+    /**
+     * init all values: x, y, operation, and labels
+     */
+    private void initValue() {
+        labelX.setText("");
+        labelY.setText("");
+        labelO.setText("");
+        label.setText("");
+        x = 0;
+        y = 0;
+        operation = ' ';
+    }
+
 }
