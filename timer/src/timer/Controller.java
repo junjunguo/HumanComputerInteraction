@@ -77,9 +77,12 @@ public class Controller implements Initializable {
 
     @FXML
     public void btnDelete(ActionEvent actionEvent) {
-        if (activeTextField != null) {
-            if (activeTextField.getText().length() > 0) {
-                activeTextField.setText(activeTextField.getText().substring(0, activeTextField.getText().length() - 1));
+        if (!running) {
+            if (activeTextField != null) {
+                if (activeTextField.getText().length() > 0) {
+                    activeTextField
+                            .setText(activeTextField.getText().substring(0, activeTextField.getText().length() - 1));
+                }
             }
         }
     }
@@ -174,14 +177,16 @@ public class Controller implements Initializable {
     }
 
     private void addNumber(int nr) {
-        if (activeTextField != null) {
-            String s = activeTextField.getText();
-            if (s.length() == TEXTLIMIT) {
-                if (s.startsWith("0")) {
-                    activeTextField.setText(s.substring(1, s.length()) + nr);
+        if (!running) {
+            if (activeTextField != null) {
+                String s = activeTextField.getText();
+                if (s.length() == TEXTLIMIT) {
+                    if (s.startsWith("0")) {
+                        activeTextField.setText(s.substring(1, s.length()) + nr);
+                    }
+                } else {
+                    activeTextField.setText(s + nr);
                 }
-            } else {
-                activeTextField.setText(s + nr);
             }
         }
     }
@@ -259,8 +264,9 @@ public class Controller implements Initializable {
      * @return true if String s is a number
      */
     private boolean isInteger(String s) {
-        if (s.charAt(0) == '0') {
-            s = s.substring(1);
+        if (s.length() > 1) {
+            if (s.charAt(0) == '0')
+                s = s.substring(1);
         }
         try {
             Integer.parseInt(s);

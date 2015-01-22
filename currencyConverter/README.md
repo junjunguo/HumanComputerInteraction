@@ -13,6 +13,8 @@ Contains:
 Reaction:
 - fast and live response when countries are selected.
 
+[Download application: currencyConverter.jar](http://junjunguo.com/data/currencyConverter/currencyConverter.jar)
+
 User Interface:
 --
 

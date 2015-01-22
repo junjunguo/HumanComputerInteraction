@@ -7,6 +7,8 @@ Build tools:
 IDE:
 - IntelliJ
 
+[Download application: Calculator.jar](http://junjunguo.com/data/calculator/Calculator.jar)
+
 User Interface:
 --
 
