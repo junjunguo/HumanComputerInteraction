@@ -1,6 +1,7 @@
 package appointment;
 
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,67 +11,68 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
-public class EditController implements Initializable, Appointments {
+public class EditController implements Initializable {
 
-    @FXML private Label                  labelDescription;
-    @FXML private Label                  labelWhere;
-    @FXML private Label                  labelDate;
-    @FXML private Label                  labelRepeat;
-    @FXML private Label                  labelTo;
-    @FXML private Label                  labelHyphen;
-    @FXML private TextArea               textAreaDescription;
-    @FXML private TextField              textFieldBuildingName;
-    @FXML private TextField              textFieldBuildingSection;
-    @FXML private TextField              textFieldRoomnumber;
-    @FXML private TextField              textFieldStartTime;
-    @FXML private TextField              textFieldFinishTime;
-    @FXML private TextField              textFieldRepeatTime;
-    @FXML private DatePicker             datePickerEvent;
-    @FXML private DatePicker             datePickerRepeat;
-    private       ArrayList<Appointment> appointments;
+    @FXML private Label      labelDescription;
+    @FXML private Label      labelWhere;
+    @FXML private Label      labelDate;
+    @FXML private Label      labelRepeat;
+    @FXML private Label      labelTo;
+    @FXML private Label      labelHyphen;
+    @FXML private TextArea   textAreaDescription;
+    @FXML private TextField  textFieldBuildingName;
+    @FXML private TextField  textFieldBuildingSection;
+    @FXML private TextField  textFieldRoomnumber;
+    @FXML private TextField  textFieldStartTime;
+    @FXML private TextField  textFieldFinishTime;
+    @FXML private TextField  textFieldRepeatTime;
+    @FXML private DatePicker datePickerEvent;
+    @FXML private DatePicker datePickerRepeat;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        appointments = new ArrayList<Appointment>();
         // getappointments from database ?
     }
 
+    @FXML
+    public void btnQuit(ActionEvent event) {
+        DataManager.saveData();
+        Platform.exit();
+    }
 
     @FXML
     public void btnCancel(ActionEvent event) {
-
+        ScreenController.loadView();
     }
 
     @FXML
     public void btnSave(ActionEvent event) {
         if (inputValidate()) {
             saveAppointment();
+            ScreenController.loadView();
         }
     }
 
     /**
      * read from input and save them to the Appointment object
      * <p/>
-     * input must be validated before use this method:
-     * <li>repeat input must be integer</li>
-     * <li>time format</li>
+     * input must be validated before use this method: <li>repeat input must be integer</li> <li>time format</li>
      * <li>input must not null</li>
      */
     private void saveAppointment() {
         Appointment appointment = new Appointment();
         appointment.setFormal(textAreaDescription.getText());
-        appointment.setRom(textFieldBuildingName.getText() + "-" + textFieldBuildingSection.getText() + " " +
-                           "" + textFieldRoomnumber.getText());
+        appointment.setRom(
+                textFieldBuildingName.getText() + "-" + textFieldBuildingSection.getText() + " " +
+                "" + textFieldRoomnumber.getText());
         appointment.setDato(datePickerEvent.getValue());
         appointment.setFra(stringToLocalTime(textFieldStartTime.getText()));
         appointment.setTil(stringToLocalTime(textFieldFinishTime.getText()));
-        appointment.setRepetisjon(Integer.parseInt(textFieldRepeatTime.getText()));
-        appointments.add(appointment);
+//        appointment.setRepetisjon(Integer.parseInt(textFieldRepeatTime.getText()));
+        DataManager.addAppointment(appointment);
     }
 
     /**
@@ -116,11 +118,8 @@ public class EditController implements Initializable, Appointments {
     }
 
     /**
-     * a smart feedback method:
-     * Input:
-     * a TextInputControl data type and and message
-     * Output:
-     * blink the given message in the given TextInputControl
+     * a smart feedback method: Input: a TextInputControl data type and and message Output: blink the given message in
+     * the given TextInputControl
      *
      * @param textinput
      * @param message
@@ -137,19 +136,21 @@ public class EditController implements Initializable, Appointments {
         fade.setCycleCount(5);
         fade.setAutoReverse(true);
         fade.play();
-        fade.setOnFinished(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                tic.clear();
-                tic.setStyle(style);
-            }
-        });
+        fade.setOnFinished(
+                new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        tic.clear();
+                        tic.setStyle(style);
+                    }
+                });
     }
 
     /**
      * parse a String to LocalTime
      *
      * @param s
+     *
      * @return LocalTime
      */
     private LocalTime stringToLocalTime(String s) {
@@ -167,6 +168,7 @@ public class EditController implements Initializable, Appointments {
      * check if input string is a valid local time
      *
      * @param s
+     *
      * @return
      */
     private boolean isvalidLocaTime(String s) {
@@ -183,6 +185,7 @@ public class EditController implements Initializable, Appointments {
      * check if input string is a positive integer
      *
      * @param value
+     *
      * @return
      */
     private boolean isPositiveInteger(String value) {
@@ -202,6 +205,7 @@ public class EditController implements Initializable, Appointments {
      * check if the input string has a number in side
      *
      * @param value
+     *
      * @return
      */
     private boolean containsAnumber(String value) {
@@ -211,10 +215,5 @@ public class EditController implements Initializable, Appointments {
             }
         }
         return false;
-    }
-
-    @Override
-    public List getAppointments() {
-        return appointments;
     }
 }

@@ -1,151 +1,159 @@
 package appointment;
 
+import javafx.beans.property.*;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectPropertyBase;
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+public class Appointment implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private StringProperty formalProperty = new SimpleStringProperty();
+    private StringProperty romProperty = new SimpleStringProperty();
+    private IntegerProperty repetisjonProperty = new SimpleIntegerProperty();
+    private Property<LocalDate> datoProperty = new ObjectPropertyBase<LocalDate>(null) {
 
-public class Appointment {
+        @Override
+        public Object getBean() {
+            return this;
+        }
 
-	private StringProperty formalProperty = new SimpleStringProperty();
-	private StringProperty romProperty = new SimpleStringProperty();
-	private IntegerProperty repetisjonProperty = new SimpleIntegerProperty();
-	private Property<LocalDate> datoProperty = new ObjectPropertyBase<LocalDate>(null) {
+        @Override
+        public String getName() {
+            return "dato";
+        }
+    };
+    private Property<LocalTime> fraProperty = new ObjectPropertyBase<LocalTime>(null) {
 
-		@Override
-		public Object getBean() {
-			return this;
-		}
+        @Override
+        public Object getBean() {
+            return this;
+        }
 
-		@Override
-		public String getName() {
-			return "dato";
-		}
-	};
-	private Property<LocalTime> fraProperty = new ObjectPropertyBase<LocalTime>(null) {
+        @Override
+        public String getName() {
+            return "fra";
+        }
+    };
+    private Property<LocalTime> tilProperty = new ObjectPropertyBase<LocalTime>(null) {
 
-		@Override
-		public Object getBean() {
-			return this;
-		}
+        @Override
+        public Object getBean() {
+            return this;
+        }
 
-		@Override
-		public String getName() {
-			return "fra";
-		}
-	};
-	private Property<LocalTime> tilProperty = new ObjectPropertyBase<LocalTime>(null) {
+        @Override
+        public String getName() {
+            return "til";
+        }
+    };
+    private Property<LocalDate> sluttProperty = new ObjectPropertyBase<LocalDate>(null) {
 
-		@Override
-		public Object getBean() {
-			return this;
-		}
+        @Override
+        public Object getBean() {
+            return this;
+        }
 
-		@Override
-		public String getName() {
-			return "til";
-		}
-	};
-	private Property<LocalDate> sluttProperty = new ObjectPropertyBase<LocalDate>(null) {
+        @Override
+        public String getName() {
+            return "slutt";
+        }
+    };
 
-		@Override
-		public Object getBean() {
-			return this;
-		}
+    public String getFormal() {
+        return formalProperty.getValue();
+    }
 
-		@Override
-		public String getName() {
-			return "slutt";
-		}
-	};
+    public void setFormal(String formal) {
+        formalProperty.setValue(formal);
+    }
 
-	public String getFormal() {
-		return formalProperty.getValue();
-	}
+    public StringProperty formalProperty() {
+        return formalProperty;
+    }
 
-	public void setFormal(String formal) {
-		formalProperty.setValue(formal);
-	}
+    public String getRom() {
+        return romProperty.getValue();
+    }
 
-	public StringProperty formalProperty() {
-		return formalProperty;
-	}
+    public void setRom(String rom) {
+        romProperty.setValue(rom);
+    }
 
-	public String getRom() {
-		return romProperty.getValue();
-	}
+    public StringProperty romProperty() {
+        return romProperty;
+    }
 
-	public void setRom(String rom) {
-		romProperty.setValue(rom);
-	}
+    public LocalDate getDato() {
+        return datoProperty.getValue();
+    }
 
-	public StringProperty romProperty() {
-		return romProperty;
-	}
+    public void setDato(LocalDate dato) {
+        datoProperty.setValue(dato);
+    }
 
-	public LocalDate getDato() {
-		return datoProperty.getValue();
-	}
+    public Property<LocalDate> DatoProperty() {
+        return datoProperty;
+    }
 
-	public void setDato(LocalDate dato) {
-		datoProperty.setValue(dato);
-	}
+    public LocalTime getFra() {
+        return fraProperty.getValue();
+    }
 
-	public Property<LocalDate> DatoProperty() {
-		return datoProperty;
-	}
+    public void setFra(LocalTime fra) {
+        fraProperty.setValue(fra);
+    }
 
-	public LocalTime getFra() {
-		return fraProperty.getValue();
-	}
+    public Property<LocalTime> fraProperty() {
+        return fraProperty;
+    }
 
-	public void setFra(LocalTime fra) {
-		fraProperty.setValue(fra);
-	}
+    public LocalTime getTil() {
+        return tilProperty.getValue();
+    }
 
-	public Property<LocalTime> fraProperty() {
-		return fraProperty;
-	}
+    public void setTil(LocalTime til) {
+        tilProperty.setValue(til);
+    }
 
-	public LocalTime getTil() {
-		return tilProperty.getValue();
-	}
+    public Property<LocalTime> tilProperty() {
+        return tilProperty;
+    }
 
-	public void setTil(LocalTime til) {
-		tilProperty.setValue(til);
-	}
+    public Integer getRepetisjon() {
+        return repetisjonProperty.getValue();
+    }
 
-	public Property<LocalTime> tilProperty() {
-		return tilProperty;
-	}
+    public void setRepetisjon(Integer repetisjon) {
+        repetisjonProperty.setValue(repetisjon);
+    }
 
-	public Integer getRepetisjon() {
-		return repetisjonProperty.getValue();
-	}
+    public IntegerProperty repetisjonProperty() {
+        return repetisjonProperty;
+    }
 
-	public void setRepetisjon(Integer repetisjon) {
-		repetisjonProperty.setValue(repetisjon);
-	}
+    public LocalDate getSlutt() {
+        return sluttProperty.getValue();
+    }
 
-	public IntegerProperty repetisjonProperty() {
-		return repetisjonProperty;
-	}
+    public void setSlutt(LocalDate slutt) {
+        sluttProperty.setValue(slutt);
+    }
 
-	public LocalDate getSlutt() {
-		return sluttProperty.getValue();
-	}
+    public Property<LocalDate> sluttProperty() {
+        return sluttProperty;
+    }
 
-	public void setSlutt(LocalDate slutt) {
-		sluttProperty.setValue(slutt);
-	}
-
-	public Property<LocalDate> sluttProperty() {
-		return sluttProperty;
-	}
-
+    @Override
+    public String toString() {
+        return "Appointment{" +
+               "formalProperty=" + getFormal() +
+               ", romProperty=" + getRom() +
+               ", repetisjonProperty=" + getRepetisjon() +
+               ", datoProperty=" + getDato() +
+               ", fraProperty=" + getFra() +
+               ", tilProperty=" + getTil() +
+               ", sluttProperty=" + getSlutt() +
+               '}';
+    }
 }

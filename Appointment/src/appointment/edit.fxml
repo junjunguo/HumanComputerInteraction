@@ -52,9 +52,9 @@
                   </Label>
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" onAction="#btnSave" prefHeight="40.0" prefWidth="245.0" text="Save &amp; Return" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+            <Button mnemonicParsing="false" onAction="#btnSave" prefHeight="40.0" prefWidth="180.0" text="Save &amp; Return" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                <GridPane.margin>
-                  <Insets right="10.0" top="10.0" />
+                  <Insets top="10.0" />
                </GridPane.margin>
             </Button>
             <TextArea fx:id="textAreaDescription" prefHeight="200.0" prefWidth="200.0" promptText="Descriptions" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -138,9 +138,14 @@
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#btnCancel" prefHeight="40.0" prefWidth="245.0" text="Cancel &amp; Return" GridPane.columnIndex="1" GridPane.halignment="LEFT">
+            <Button mnemonicParsing="false" onAction="#btnCancel" prefHeight="40.0" prefWidth="180.0" text="Cancel &amp; Return" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <GridPane.margin>
-                  <Insets top="10.0" />
+                  <Insets left="40.0" top="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnQuit" prefHeight="40.0" prefWidth="130.0" text="Quit" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+               <GridPane.margin>
+                  <Insets right="10.0" top="10.0" />
                </GridPane.margin>
             </Button>
          </children>
