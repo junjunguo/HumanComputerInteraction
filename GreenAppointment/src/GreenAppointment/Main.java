@@ -1,4 +1,4 @@
-package appointment;
+package GreenAppointment;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

@@ -1,4 +1,4 @@
-package appointment;
+package GreenAppointment;
 
 import javafx.beans.property.SimpleStringProperty;
 

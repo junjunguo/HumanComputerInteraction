@@ -1,4 +1,4 @@
-package appointment;
+package GreenAppointment;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
@@ -11,23 +11,24 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
 public class EditController implements Initializable {
 
-    @FXML private Label      labelDescription;
-    @FXML private Label      labelWhere;
-    @FXML private Label      labelDate;
-    @FXML private Label      labelRepeat;
-    @FXML private Label      labelTo;
-    @FXML private Label      labelHyphen;
-    @FXML private TextArea   textAreaDescription;
-    @FXML private TextField  textFieldBuildingName;
-    @FXML private TextField  textFieldBuildingSection;
-    @FXML private TextField  textFieldRoomnumber;
-    @FXML private TextField  textFieldStartTime;
-    @FXML private TextField  textFieldFinishTime;
-    @FXML private TextField  textFieldRepeatTime;
+    @FXML private Label labelDescription;
+    @FXML private Label labelWhere;
+    @FXML private Label labelDate;
+    @FXML private Label labelRepeat;
+    @FXML private Label labelTo;
+    @FXML private Label labelHyphen;
+    @FXML private TextArea textAreaDescription;
+    @FXML private TextField textFieldBuildingName;
+    @FXML private TextField textFieldBuildingSection;
+    @FXML private TextField textFieldRoomnumber;
+    @FXML private TextField textFieldStartTime;
+    @FXML private TextField textFieldFinishTime;
+    @FXML private TextField textFieldRepeatTime;
     @FXML private DatePicker datePickerEvent;
     @FXML private DatePicker datePickerRepeat;
 
@@ -71,13 +72,29 @@ public class EditController implements Initializable {
         appointment.setDato(datePickerEvent.getValue());
         appointment.setFra(stringToLocalTime(textFieldStartTime.getText()));
         appointment.setTil(stringToLocalTime(textFieldFinishTime.getText()));
-//        appointment.setRepetisjon(Integer.parseInt(textFieldRepeatTime.getText()));
+        appointment.setRepetisjon(HandleAppointmentRepeatation());
         DataManager.addAppointment(appointment);
     }
-    
-    private void repeatEvent(){
-//        datePickerRepeat.getValue();
-        
+
+    /**
+     * calculate days between datePickerEvent and datePickerRepeat compare with input from repeat times and return * the
+     * bigger integer as repeat times
+     *
+     * @return total repeat times
+     */
+    private int HandleAppointmentRepeatation() {
+        int repeatTimes = 0;
+        int repeatDays = 0;
+        if (textFieldRepeatTime.getText().length() > 0) {
+            repeatTimes = Integer.parseInt(textFieldRepeatTime.getText());
+        }
+        if (datePickerRepeat.getValue() != null && datePickerRepeat.getValue().isAfter(datePickerEvent.getValue())) {
+            repeatDays = (int) ChronoUnit.DAYS.between(datePickerEvent.getValue(), datePickerRepeat.getValue());
+        }
+        if (repeatDays > repeatTimes) {
+            return repeatDays;
+        }
+        return repeatTimes;
     }
 
     /**
@@ -117,6 +134,27 @@ public class EditController implements Initializable {
         }
         if (textFieldRepeatTime.getText().length() > 0 && !isPositiveInteger(textFieldRepeatTime.getText())) {
             feedbackMessages(textFieldRepeatTime, "positive integer");
+            b = false;
+        }
+        if (datePickerEvent.getValue() == null) {
+            final String style = datePickerEvent.getStyle();
+            final String text = datePickerEvent.getPromptText();
+            datePickerEvent.setPromptText("No date selected!");
+            datePickerEvent.setStyle("-fx-text-fill: darkred");
+            final FadeTransition fade = new FadeTransition(Duration.seconds(0.5), datePickerEvent);
+            fade.setFromValue(0.2);
+            fade.setToValue(1.0);
+            fade.setCycleCount(5);
+            fade.setAutoReverse(true);
+            fade.play();
+            fade.setOnFinished(
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            datePickerEvent.setPromptText(text);
+                            datePickerEvent.setStyle(style);
+                        }
+                    });
             b = false;
         }
         return b;

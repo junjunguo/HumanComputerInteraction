@@ -1,0 +1,68 @@
+/*
+ * Created by GuoJunjun <junjunguo.com> on 1.2.2015.
+ *
+ * This file is part of GreenAppointment
+ */
+
+.thebackground {
+    -fx-background-color : #99D076;
+    }
+
+.sectionTitle {
+    -fx-text-fill : #0C1F00;
+    }
+
+.inputSection {
+    -fx-background-color : #D5F2C2;
+    }
+
+.button {
+    -fx-background-color : #295A09;
+    -fx-text-fill        : #D5F2C2;
+    -fx-font-weight      : 900;
+    }
+
+.button:hover {
+    -fx-background-color : #0C1F00;
+    }
+
+.text-area *.content {
+    -fx-background-color : #D5F2C2;
+    }
+
+.date-picker {
+    -fx-background-color : #D5F2C2;
+    }
+
+.date-picker-popup > .mo {
+    -fx-background-color : #D5F2C2;
+    }
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color : #D5F2C2;
+    }
+
+.date-picker > .text-field {
+    -fx-background-color : #D5F2C2;
+    }
+
+.list-view .list-cell {
+    -fx-padding           : 10 20 10 20;
+    -fx-background-color  : #99D076;
+    -fx-background-insets : 0, 1;
+    -fx-effect            : dropshadow(three-pass-box, rgba(12, 31, 0, 0.6), 8, 0.0, 0, 0);
+    }
+
+.list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover {
+    -fx-background-color : #295A09;
+    -fx-text-fill        : #D5F2C2;
+    }
+
+.list-view .list-cell:filled:hover {
+    -fx-background-color : #0C1F00;
+    -fx-text-fill        : #D5F2C2;
+    }
+
+.list-cell:even {
+    -fx-background-color : #D5F2C2;
+    }

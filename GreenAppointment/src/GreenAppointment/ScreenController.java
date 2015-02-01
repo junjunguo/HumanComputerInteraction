@@ -1,4 +1,4 @@
-package appointment;
+package GreenAppointment;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +20,7 @@ public class ScreenController {
      */
     public static void setTheStage(Stage stage) {
         theStage = stage;
-        theStage.setTitle("Appointment");
+        theStage.setTitle("Green Appointment");
         new DataManager();
     }
 

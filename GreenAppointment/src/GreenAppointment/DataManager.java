@@ -1,4 +1,4 @@
-package appointment;
+package GreenAppointment;
 
 /** Created by GuoJunjun <junjunguo.com> on 31/01/15. */
 
