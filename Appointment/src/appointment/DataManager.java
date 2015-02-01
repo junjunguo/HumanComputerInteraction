@@ -15,7 +15,7 @@ public class DataManager {
 
     public DataManager() {
         appointments = new ArrayList<Appointment>();
-        System.out.println(loadData());
+        System.out.println("loadData: " + loadData());
     }
 
     /**
@@ -52,8 +52,9 @@ public class DataManager {
         try {
             FileOutputStream savefile = new FileOutputStream("appointmentSavedFile.txt");
             ObjectOutputStream save = new ObjectOutputStream(savefile);
-            System.out.println("out print appointment: " + appointments.get(0).toString());
             save.writeObject(appointments);
+            System.out.println("save appointment: " + appointments.get(0).toString());
+
             save.close();
             return true;
         } catch (FileNotFoundException e) {
@@ -70,20 +71,25 @@ public class DataManager {
      * @return true is succeed, false otherwise
      */
     public static boolean loadData() {
+        ArrayList<Appointment> ap;
         try {
-            FileInputStream savedfile = new FileInputStream(new File("appointmentSavedFile.txt"));
-            ArrayList<Appointment> ap = (ArrayList<Appointment>) new ObjectInputStream(savedfile).readObject();
-            appointments = ap;
+            FileInputStream savedfile = new FileInputStream("appointmentSavedFile.txt");
+            ObjectInputStream object = new ObjectInputStream(savedfile);
+            ap = (ArrayList<Appointment>) object.readObject();
+            System.out.println(ap.toString() + " length: " + ap.size());
+            if (ap.get(0).getFormal() == null) {
+                System.out.println("null Appointment");
+            } else {
+                appointments = ap;
+                System.out.println("out print appointment: " + appointments.get(0).toString());
+            }
             return true;
-        } catch (NotSerializableException e) {
-            System.out.println("NotSerializableException: " + e);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-
         }
         return false;
     }

@@ -1,29 +1,39 @@
 package appointment;
 
-import javafx.beans.property.*;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.Property;
+import javafx.beans.property.StringProperty;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+/**
+ * Når en serialiserer et objekt, dvs. gjør det om til en sekvens med bytes, så må også alle felt være serialiserbare.
+ * Feltene som knyttet til tid er av typer som ikke markert som serialiserbart, siden det er en såkalt anonym
+ * indreklasse. Denne klassen må defineres som egen klasse utenfor Appointment og implementere Serializable. Du kan
+ * f.eks. kalle dem ene LocalDateProperty, la den utvide (med extends) ObjectPropertyBase<LocalDate> og flytte metodene
+ * dit. Tilsvarende for LocalTime-property-ene.
+ */
 public class Appointment implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private StringProperty formalProperty = new SimpleStringProperty();
-    private StringProperty romProperty = new SimpleStringProperty();
-    private IntegerProperty repetisjonProperty = new SimpleIntegerProperty();
-    private Property<LocalDate> datoProperty = new ObjectPropertyBase<LocalDate>(null) {
+    private MySimpleStringProperty formalProperty = new MySimpleStringProperty();
+    private MySimpleStringProperty romProperty = new MySimpleStringProperty();
+    private MySimpleIntegerProperty repetisjonProperty = new MySimpleIntegerProperty();
+    private LocalDateProperty datoProperty = new LocalDateProperty();
+    //            new ObjectPropertyBase<LocalDate>(null) {
 
-        @Override
-        public Object getBean() {
-            return this;
-        }
-
-        @Override
-        public String getName() {
-            return "dato";
-        }
-    };
-    private Property<LocalTime> fraProperty = new ObjectPropertyBase<LocalTime>(null) {
+    //        @Override
+    //        public Object getBean() {
+    //            return this;
+    //        }
+    //
+    //        @Override
+    //        public String getName() {
+    //            return "dato";
+    //        }
+    //    };
+    private LocalTimeProperty fraProperty = new LocalTimeProperty() {
+        //            new ObjectPropertyBase<LocalTime>(null) {
 
         @Override
         public Object getBean() {
@@ -35,7 +45,8 @@ public class Appointment implements Serializable {
             return "fra";
         }
     };
-    private Property<LocalTime> tilProperty = new ObjectPropertyBase<LocalTime>(null) {
+    private LocalTimeProperty tilProperty = new LocalTimeProperty() {
+        //            new ObjectPropertyBase<LocalTime>(null) {
 
         @Override
         public Object getBean() {
@@ -47,7 +58,8 @@ public class Appointment implements Serializable {
             return "til";
         }
     };
-    private Property<LocalDate> sluttProperty = new ObjectPropertyBase<LocalDate>(null) {
+    private LocalDateProperty sluttProperty = new LocalDateProperty() {
+        //            new ObjectPropertyBase<LocalDate>(null) {
 
         @Override
         public Object getBean() {

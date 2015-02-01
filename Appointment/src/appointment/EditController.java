@@ -74,6 +74,11 @@ public class EditController implements Initializable {
 //        appointment.setRepetisjon(Integer.parseInt(textFieldRepeatTime.getText()));
         DataManager.addAppointment(appointment);
     }
+    
+    private void repeatEvent(){
+//        datePickerRepeat.getValue();
+        
+    }
 
     /**
      * check if the input is valid
