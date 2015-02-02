@@ -20,21 +20,7 @@ public class Appointment implements Serializable {
     private MySimpleStringProperty romProperty = new MySimpleStringProperty();
     private MySimpleIntegerProperty repetisjonProperty = new MySimpleIntegerProperty();
     private LocalDateProperty datoProperty = new LocalDateProperty();
-    //            new ObjectPropertyBase<LocalDate>(null) {
-
-    //        @Override
-    //        public Object getBean() {
-    //            return this;
-    //        }
-    //
-    //        @Override
-    //        public String getName() {
-    //            return "dato";
-    //        }
-    //    };
     private LocalTimeProperty fraProperty = new LocalTimeProperty() {
-        //            new ObjectPropertyBase<LocalTime>(null) {
-
         @Override
         public Object getBean() {
             return this;
