@@ -200,6 +200,10 @@ public class EditController implements Initializable {
         //        DateTimeFormatter inputFormat = new DateTimeFormatter("HH:mm");
         LocalTime time = null;
         try {
+            //simple input: HHMM
+            if (s.length() == 4) {
+                s = s.substring(0, 2) + ":" + s.substring(2, 4);
+            }
             time = LocalTime.parse(s);
         } catch (Exception e) {
             System.out.println("parse string to localtime exceptions: " + e);
@@ -216,6 +220,11 @@ public class EditController implements Initializable {
      */
     private boolean isvalidLocaTime(String s) {
         try {
+            //simple input: HHMM
+            if (s.length() == 4) {
+                s = s.substring(0, 2) + ":" + s.substring(2, 4);
+            }
+
             LocalTime.parse(s);
             return true;
         } catch (Exception e) {

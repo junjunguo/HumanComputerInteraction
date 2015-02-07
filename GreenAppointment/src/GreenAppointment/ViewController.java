@@ -75,7 +75,7 @@ public class ViewController implements Initializable {
      * @return the Appointment objects index in appointments list; -1 if not found;
      */
     private int calculateAppointmentsindex(int index) {
-        int appindex = 0;
+        int appindex = -1;
         int nr = -1;
         for (Appointment a : DataManager.getAppointments()) {
             appindex++;

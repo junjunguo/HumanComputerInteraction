@@ -3,11 +3,14 @@ package GreenAppointment;
 /** Created by GuoJunjun <junjunguo.com> on 31/01/15. */
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -20,6 +23,7 @@ public class DataManager {
 
     public DataManager() {
         appointments = new ArrayList<Appointment>();
+        loadData();
         //        System.out.println("loadData: " + loadData());
     }
 
@@ -82,7 +86,7 @@ public class DataManager {
             mapper.writeValue(new File("appointmentSavedFile.json"), appointments);
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("sonvert and save to json : " + e);
         }
         return false;
     }
@@ -126,15 +130,44 @@ public class DataManager {
         ObjectMapper mapper = new ObjectMapper();
         try {
             ArrayList al = mapper.readValue(new File("appointmentSavedFile.json"), ArrayList.class);
-            System.out.println("read as arraylist: " + al.toString());
-            List<Appointment> myObjects = mapper.readValue(
-                    new File("appointmentSavedFile.json"), mapper.getTypeFactory().constructCollectionType(
-                            List.class, Appointment.class));
-            System.out.println("my other objects: " + myObjects.toString());
+            System.out.println("read as arraylist: " + al.toString() + "\n size: " + al.size());
+
+            for (int i = 0; i < al.size(); i++) {
+                JSONObject node = new JSONObject(al.get(i).toString());
+
+
+                Appointment appointment = new Appointment();
+                appointment.setFormal(node.get("formal").toString());
+                appointment.setRom(node.get("rom").toString());
+                JSONObject datoOb = (JSONObject) node.get("dato");
+                LocalDate localDate = LocalDate.of(
+                        datoOb.getInt("year"), datoOb.getInt("monthValue"), datoOb.getInt("dayOfMonth"));
+                appointment.setDato(localDate);
+                JSONObject locaTimeOb = (JSONObject) node.get("fra");
+                LocalTime localTime = LocalTime.of(locaTimeOb.getInt("hour"), locaTimeOb.getInt("minute"));
+                appointment.setFra(localTime);
+                JSONObject tilTimeOb = (JSONObject) node.get("til");
+                appointment.setTil(
+                        LocalTime.of(tilTimeOb.getInt("hour"), tilTimeOb.getInt("minute")));
+                appointment.setRepetisjon(node.getInt("repetisjon"));
+                System.out.println(appointment.getRom());
+                addAppointment(appointment);
+            }
+
+
+            //            List<Appointment> myObjects = mapper.readValue(
+            //                    new File("appointmentSavedFile.json"), mapper.getTypeFactory()
+            // .constructCollectionType(
+            //                            List.class, Appointment.class));
+            //            System.out.println("my other objects: " + myObjects.toString());
             //            appointments = (ArrayList<Appointment>) myObjects;
+
+
             return true;
         } catch (IOException e) {
             System.out.println("IOException: " + e);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
         return false;
     }

@@ -1,1 +1,98 @@
-[{"rom":"IT-Bygge 260","formal":"MMI Group arbeid\t","dato":{"year":2015,"month":"FEBRUARY","monthValue":2,"dayOfMonth":5,"dayOfWeek":"THURSDAY","era":"CE","dayOfYear":36,"leapYear":false,"chronology":{"id":"ISO","calendarType":"iso8601"}},"fra":{"hour":12,"minute":0,"second":0,"nano":0},"til":{"hour":15,"minute":0,"second":0,"nano":0},"repetisjon":6,"slutt":null}]
+[
+  {
+    "formal": "111",
+    "rom": "111-111 111",
+    "dato": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 1,
+      "dayOfWeek": "SUNDAY",
+      "era": "CE",
+      "dayOfYear": 32,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    },
+    "fra": {
+      "hour": 19,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "til": {
+      "hour": 20,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "repetisjon": 1,
+    "slutt": null
+  },
+  {
+    "formal": "22",
+    "rom": "22-22 22",
+    "dato": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 2,
+      "dayOfWeek": "MONDAY",
+      "era": "CE",
+      "dayOfYear": 33,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    },
+    "fra": {
+      "hour": 22,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "til": {
+      "hour": 23,
+      "minute": 0,
+      "second": 0,
+      "nano": 0
+    },
+    "repetisjon": 1,
+    "slutt": null
+  },
+  {
+    "formal": "wqe",
+    "rom": "12-12 12",
+    "dato": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 1,
+      "dayOfWeek": "SUNDAY",
+      "era": "CE",
+      "dayOfYear": 32,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    },
+    "fra": {
+      "hour": 12,
+      "minute": 34,
+      "second": 0,
+      "nano": 0
+    },
+    "til": {
+      "hour": 23,
+      "minute": 45,
+      "second": 0,
+      "nano": 0
+    },
+    "repetisjon": 17,
+    "slutt": null
+  }
+]
