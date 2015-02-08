@@ -98,10 +98,9 @@ public class ViewController implements Initializable {
     }
 
     private void editSelectedAppointment(int index) {
+        EditController.editExist = true;
+        EditController.index = index;
         ScreenController.loadEdit();
-        Appointment a = DataManager.getAppointments().get(index);
-
-        // make a new window for edit ...
     }
 
     @FXML

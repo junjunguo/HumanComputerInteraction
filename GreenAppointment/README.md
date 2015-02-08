@@ -72,4 +72,62 @@ Class Diagram:
 ![](classdiagram.png)
 
 
+File Handling
+--
 
+Use Json to read and write:
+- easier to handling file than use java 'ObjectInputStream' and 'ObjectOutputStream';
+- human readable text to transmit data objects (alternative to XML)
+- light weight format for data interchanging
+- easy to transfer data to other programming languages
+- advantages to transmit data between server and web applications.
+
+```Json
+
+  {
+    "formal": "Edit worked !",
+    "rom": "aaa-aaa aa1",
+    "dato": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 1,
+      "dayOfWeek": "SUNDAY",
+      "era": "CE",
+      "dayOfYear": 32,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    },
+    "fra": {
+      "hour": 12,
+      "minute": 34,
+      "second": 0,
+      "nano": 0
+    },
+    "til": {
+      "hour": 23,
+      "minute": 45,
+      "second": 0,
+      "nano": 0
+    },
+    "repetisjon": 2,
+    "slutt": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 3,
+      "dayOfWeek": "TUESDAY",
+      "era": "CE",
+      "dayOfYear": 34,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    }
+  }
+
+```

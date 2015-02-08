@@ -27,6 +27,7 @@ public class DataManager {
         //        System.out.println("loadData: " + loadData());
     }
 
+
     /**
      * add the given appointment to appointments array list
      *
@@ -150,7 +151,13 @@ public class DataManager {
                 appointment.setTil(
                         LocalTime.of(tilTimeOb.getInt("hour"), tilTimeOb.getInt("minute")));
                 appointment.setRepetisjon(node.getInt("repetisjon"));
-                System.out.println(appointment.getRom());
+                if (node.get("slutt").toString() != "null") {
+                    System.out.println("have slutt date");
+                    JSONObject sluttOb = (JSONObject) node.get("slutt");
+                    LocalDate sluttD = LocalDate.of(
+                            sluttOb.getInt("year"), sluttOb.getInt("monthValue"), sluttOb.getInt("dayOfMonth"));
+                    appointment.setSlutt(sluttD);
+                }
                 addAppointment(appointment);
             }
 

@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class EditController implements Initializable {
 
+    public static boolean editExist = false;
+    public static int index;
     @FXML private Label labelDescription;
     @FXML private Label labelWhere;
     @FXML private Label labelDate;
@@ -36,6 +38,21 @@ public class EditController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // getappointments from database ?
+        if (editExist) {
+            Appointment a = DataManager.getAppointments().get(index);
+            textAreaDescription.setText(a.getFormal());
+            String[] s = a.getRom().split("-| ");
+            textFieldBuildingName.setText(s[0]);
+            textFieldBuildingSection.setText(s[1]);
+            textFieldRoomnumber.setText(s[2]);
+            textFieldRepeatTime.setText(a.getRepetisjon().toString());
+            datePickerEvent.setValue(a.getDato());
+            textFieldStartTime.setText(a.getFra().toString());
+            textFieldFinishTime.setText(a.getTil().toString());
+            if (a.getSlutt() != null) {
+                datePickerRepeat.setValue(a.getSlutt());
+            }
+        }
     }
 
     @FXML
@@ -46,13 +63,16 @@ public class EditController implements Initializable {
 
     @FXML
     public void btnCancel(ActionEvent event) {
+        editExist = false;
         ScreenController.loadView();
     }
 
     @FXML
     public void btnSave(ActionEvent event) {
+
         if (inputValidate()) {
             saveAppointment();
+            editExist = false;
             ScreenController.loadView();
         }
     }
@@ -64,7 +84,12 @@ public class EditController implements Initializable {
      * <li>input must not null</li>
      */
     private void saveAppointment() {
-        Appointment appointment = new Appointment();
+        Appointment appointment;
+        if (editExist) {
+            appointment = DataManager.getAppointments().get(index);
+        } else {
+            appointment = new Appointment();
+        }
         appointment.setFormal(textAreaDescription.getText());
         appointment.setRom(
                 textFieldBuildingName.getText() + "-" + textFieldBuildingSection.getText() + " " +
@@ -73,7 +98,14 @@ public class EditController implements Initializable {
         appointment.setFra(stringToLocalTime(textFieldStartTime.getText()));
         appointment.setTil(stringToLocalTime(textFieldFinishTime.getText()));
         appointment.setRepetisjon(HandleAppointmentRepeatation());
-        DataManager.addAppointment(appointment);
+        if (datePickerRepeat.getValue() != null && datePickerRepeat.getValue().isAfter(datePickerEvent.getValue())) {
+            appointment.setSlutt(datePickerRepeat.getValue());
+        }
+        if (editExist) {
+            DataManager.getAppointments().set(index, appointment);
+        } else {
+            DataManager.addAppointment(appointment);
+        }
     }
 
     /**

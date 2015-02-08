@@ -94,5 +94,127 @@
     },
     "repetisjon": 17,
     "slutt": null
+  },
+  {
+    "formal": "12",
+    "rom": "ww-ww qw2",
+    "dato": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 1,
+      "dayOfWeek": "SUNDAY",
+      "era": "CE",
+      "dayOfYear": 32,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    },
+    "fra": {
+      "hour": 12,
+      "minute": 34,
+      "second": 0,
+      "nano": 0
+    },
+    "til": {
+      "hour": 23,
+      "minute": 45,
+      "second": 0,
+      "nano": 0
+    },
+    "repetisjon": 1,
+    "slutt": null
+  },
+  {
+    "formal": "Edit worked !",
+    "rom": "aaa-aaa aa1",
+    "dato": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 1,
+      "dayOfWeek": "SUNDAY",
+      "era": "CE",
+      "dayOfYear": 32,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    },
+    "fra": {
+      "hour": 12,
+      "minute": 34,
+      "second": 0,
+      "nano": 0
+    },
+    "til": {
+      "hour": 23,
+      "minute": 45,
+      "second": 0,
+      "nano": 0
+    },
+    "repetisjon": 2,
+    "slutt": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 3,
+      "dayOfWeek": "TUESDAY",
+      "era": "CE",
+      "dayOfYear": 34,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    }
+  },
+  {
+    "formal": "last test",
+    "rom": "last-t 123",
+    "dato": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 23,
+      "dayOfWeek": "MONDAY",
+      "era": "CE",
+      "dayOfYear": 54,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    },
+    "fra": {
+      "hour": 22,
+      "minute": 33,
+      "second": 0,
+      "nano": 0
+    },
+    "til": {
+      "hour": 23,
+      "minute": 44,
+      "second": 0,
+      "nano": 0
+    },
+    "repetisjon": 5,
+    "slutt": {
+      "year": 2015,
+      "month": "FEBRUARY",
+      "monthValue": 2,
+      "dayOfMonth": 28,
+      "dayOfWeek": "SATURDAY",
+      "era": "CE",
+      "dayOfYear": 59,
+      "leapYear": false,
+      "chronology": {
+        "id": "ISO",
+        "calendarType": "iso8601"
+      }
+    }
   }
 ]
