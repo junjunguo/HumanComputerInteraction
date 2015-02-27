@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="center" hgap="10" prefHeight="555.0" prefWidth="800.0" styleClass="thebackground" stylesheets="@style.css" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Calendar.ViewController">
+    <children>
+        <GridPane prefHeight="500.0" prefWidth="400.0" GridPane.columnIndex="1">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="427.0" minWidth="10.0" prefWidth="357.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="35.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="55.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="35.0" prefHeight="35.0" valignment="TOP" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" valignment="BOTTOM" vgrow="NEVER" />
+            </rowConstraints>
+            <children>
+                <TextField fx:id="textFieldBuildingName" prefHeight="40.0" promptText="Building name" styleClass="inputSection" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                    <GridPane.margin>
+                        <Insets right="10.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextArea fx:id="textAreaDescription" prefHeight="89.0" prefWidth="479.0" promptText="Descriptions" styleClass="inputSection" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets right="10.0" />
+                    </GridPane.margin>
+                </TextArea>
+                <Label fx:id="labelDescription" styleClass="sectionTitle" text="Description" textAlignment="RIGHT" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets right="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label fx:id="labelWhere" styleClass="sectionTitle" text="Location" textAlignment="RIGHT" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets right="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label fx:id="labelDate" styleClass="sectionTitle" text="Date Time" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets right="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label fx:id="labelDescription1" styleClass="sectionTitle" text="Title" textAlignment="RIGHT" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField prefHeight="40.0" promptText="Event title" styleClass="inputSection" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                    <GridPane.margin>
+                        <Insets right="10.0" />
+                    </GridPane.margin>
+                </TextField>
+            <TextField fx:id="textFieldBuildingName1" prefHeight="40.0" promptText="Event Data &amp; time" styleClass="inputSection" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin></TextField>
+              <Button mnemonicParsing="false" onAction="#btnConfirm" prefHeight="40.0" prefWidth="180.0" text="Confirm" 
+                      GridPane.halignment="LEFT" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
+                  <GridPane.margin>
+                      <Insets right="10.0" />
+                  </GridPane.margin>
+              </Button>
+              <Button mnemonicParsing="false" onAction="#btnDecline" prefHeight="40.0" prefWidth="180.0" text="Decline"
+                      GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
+                  <GridPane.margin>
+                      <Insets left="10.0" right="10.0" />
+                  </GridPane.margin>
+              </Button>
+            </children>
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+        </GridPane>
+        <GridPane prefHeight="500.0" prefWidth="400.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="500.0" minHeight="10.0" prefHeight="500.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <ListView prefHeight="500.0" prefWidth="380.0" styleClass="inputSection" GridPane.rowIndex="1">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </ListView>
+                <Label styleClass="sectionTitle" text="Agenda">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+            <Button maxHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" styleClass="bigFont" 
+                    text="+" onAction="#btnAdd" GridPane.halignment="RIGHT">
+               <GridPane.margin>
+                  <Insets bottom="1.0" />
+               </GridPane.margin>
+            </Button>
+            </children>
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0" />
+            </GridPane.margin>
+        </GridPane>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints maxWidth="611.0" minWidth="375.0" prefWidth="435.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+</GridPane>
