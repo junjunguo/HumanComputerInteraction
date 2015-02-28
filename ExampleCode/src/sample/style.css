@@ -1,0 +1,33 @@
+/**
+ * color Style Light Blue
+ *
+ * Created by GuoJunjun <junjunguo.com> on 27/02/15.
+ */
+
+.thebackground {
+    -fx-background-color : #B3E5FC;
+    }
+
+.sectionTitle {
+    -fx-text-fill   : #01579B;
+    -fx-font-weight : bolder;
+    -fx-font-size   : 14px;
+    }
+
+.warningText {
+    font-color : #0277BD;
+    }
+
+.inputSection {
+    -fx-background-color : #E1F5FE;
+    }
+
+.button {
+    -fx-background-color : #29B6F6;
+    -fx-text-fill        : #E1F5FE;
+    -fx-font-weight      : 900;
+    }
+
+.button:hover {
+    -fx-background-color : #01579B;
+    }

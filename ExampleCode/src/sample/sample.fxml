@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0"
+      prefWidth="800.0" styleClass="thebackground" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <GridPane alignment="CENTER" layoutX="300.0" layoutY="50.0" prefHeight="300.0" prefWidth="200.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="55.0" minHeight="55.0" prefHeight="55.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="80.0" minHeight="80.0" prefHeight="55.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <TextField fx:id="userName" alignment="CENTER" prefHeight="40.0" promptText="User ID"
+                           styleClass="inputSection" GridPane.halignment="CENTER" GridPane.rowIndex="2"
+                           GridPane.valignment="CENTER"/>
+                <Label styleClass="sectionTitle" text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="1"
+                       GridPane.valignment="CENTER"/>
+                <Label styleClass="sectionTitle" text="Example Code" GridPane.halignment="CENTER"
+                       GridPane.valignment="CENTER"/>
+                <Button mnemonicParsing="false" onAction="#loginOnclick" prefHeight="40.0" prefWidth="200.0"
+                        text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER"/>
+                <Button mnemonicParsing="false" onAction="#registerOnClick" prefHeight="40.0" prefWidth="200.0"
+                        text="Register" GridPane.rowIndex="5"/>
+                <Text fx:id="warningText" styleClass="warningText" strokeType="OUTSIDE" strokeWidth="0.0"
+                      GridPane.rowIndex="6"/>
+                <PasswordField fx:id="userPassword" alignment="CENTER" prefHeight="40.0" promptText="Password"
+                               GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER"
+                               styleClass="inputSection"/>
+            </children>
+        </GridPane>
+    </children>
+</Pane>
