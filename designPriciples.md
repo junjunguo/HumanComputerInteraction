@@ -110,7 +110,7 @@ Design Principles
 -  Lag et godt hjelpesystem. 
 	–  Hurtigreferanse
 	–  Brukermanual
-–  How to’s, Tooltips, etc
+-  How to’s, Tooltips, etc
 
 
 ##Bruce Tognazzinis ”First Principles“
@@ -139,17 +139,17 @@ Design Principles
 ##Norman’s prinsipper fra ”Design of Everyday Things”
 
 -  Visibility
-	–  Kan jeg se det?
+	- Kan jeg se det?
 -  Feedback
-	–  Hvaskjernå?
+	-  Hvaskjernå?
 -  Affordance
-	–  Hvordankanjegbrukedet?
+	-  Hvordankanjegbrukedet?
 -  Mapping
-	–  Hvorerjegoghvorkanjeggå?
+	-  Hvorerjegoghvorkanjeggå?
 -  Constraints
-	–  Hvorforkanjegikkegjøreslik?
+	-  Hvorforkanjegikkegjøreslik?
 -  Consistency
-	–  HarjegikkeseBdeBefør?
+	-  HarjegikkeseBdeBefør?
 
 
 

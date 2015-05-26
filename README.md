@@ -5,7 +5,7 @@ Human-computer interaction
 
 - (Menneske-Maskin-Interaksjon MMI)
 
-[Designprinsipper og guidelines](designPrinciples.md)
+[Designprinsipper og guidelines](designPriciples.md)
 --
 
 [Calendar](CalendarProgram/)
