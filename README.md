@@ -8,6 +8,12 @@ Human-computer interaction
 [Designprinsipper og guidelines](designPriciples.md)
 --
 
+[GUI Components](guiComponents.md)
+--
+
+[JavaFX](javafx.md)
+--
+
 [Calendar](CalendarProgram/)
 --
 ![Calendar](CalendarProgram/login.png)

@@ -41,6 +41,7 @@ Design Principles
 ###1. Visibility of system status
 
 -  The system should always keep users informed about what is going on, through appropriate feedback within reasonable time.
+
 -  Systemet skal all tid vise brukeren hva som foregår i maskinen, gjennom relevant tilbakemelding innen rimelig tid.
 
 
@@ -48,6 +49,7 @@ Design Principles
 
 -  The system should speak the users'language,with words, phrases and concepts familiar to the user, rather than system-oriented terms.
 -  Follow real-world conventions, making information appear in a natural and logical order.
+
 -  Snakk brukerensspråk!
 -  Brukbegreper,ord og framstillingsmåte som brukeren forstår.
 -  Metaforer er et viktig virkemiddel.
@@ -57,6 +59,7 @@ Design Principles
 
 -  Users often choose system functions by mistake and will need a clearly marked "emergency exit" to leave the unwanted state without having to go through an extended dialogue.
 -  Support undo and redo.
+
 -  La brukeren ha kontroll.
 -  Implementer Angre på alle nivåer.
 
@@ -64,12 +67,14 @@ Design Principles
 
 -  Users should not have to wonder whether different words, situations, or actions mean the same thing.
 -  Follow platform conventions. 
+
 -  Konsistens i grensesnittet
 -  Følg retningslinjene for den plattformen du bruker (WINDOWS, Web, Linux,...).
 
 ###5. Error prevention
 
 -  Even better than good error messages is a careful design which prevents a problem from occurring in the first place.
+
 -  Lag systemet slikat minst mulig feil er mulig.
 -  Stikkord:Fleksibilitet
 
@@ -78,7 +83,8 @@ Design Principles
 -  Makeobjects,actions,andoptionsvisible.
 -  The user should not have to remember information from one part of the dialogue to another.
 -  Instructions for use of the system should be visible or easily retrievable whenever appropriate.
--  Kunnskapiverden,ikkeihodet!
+
+-  Kunnskapiverden,ikke i hodet!
 
 ###7. Flexibility and efficiency of use
 
@@ -141,15 +147,15 @@ Design Principles
 -  Visibility
 	- Kan jeg se det?
 -  Feedback
-	-  Hvaskjernå?
+	-  Hva skjer nå?
 -  Affordance
-	-  Hvordankanjegbrukedet?
+	-  Hvordan kan jeg bruke det?
 -  Mapping
-	-  Hvorerjegoghvorkanjeggå?
+	-  Hvor er jeg og hvor kan jeg gå?
 -  Constraints
-	-  Hvorforkanjegikkegjøreslik?
+	-  Hvor for kan jeg ikke gjøre slik?
 -  Consistency
-	-  HarjegikkeseBdeBefør?
+	-  Har jeg ikke sett dette før?
 
 
 
