@@ -158,4 +158,52 @@ Design Principles
 	-  Har jeg ikke sett dette før?
 
 
+#Conceptual Models:
+###Begin by Designing What to Design
+- <￼JEFF JOHNSON AND AUSTIN HENDERSON - design >
+
+**Good user interfaces start with clean, simple, task-oriented conceptual models.**
+
+**The conceptual model is the bones of the design.**
+
+####A conceptual model is a high-level description of how a system is organized and operates.
+
+#####A conceptual model of an interactive system is:
+- an **idealized view** of the how the system works—the model designers hope users will internalize;
+- the **ontological structure** of the system: the objects, their relationships, and control structures;
+- the **mechanism** by which users accomplish the tasks the system is intended to support.
+
+#####Simple: 
+- A conceptual model should be as simple as possible while providing the required functionality. 
+- An important guideline for designing a conceptual model is: "Less is more."
+
+#####What a Conceptual Model Is Not:
+- The conceptual model of an interactive system is not the user interface.
+- The conceptual model is not the users' mental model of the system.
+- The conceptual models are not use cases (also known as task-level scenarios).
+
+#####
+- User-interface. 
+	- A conceptual model gives the designer a clear target for what the inter- face has to deliver to the user
+
+
+[HCI](HCI.md)
+==
+
+Psychology
+==
+
+###Gestalt psychology or gestaltism
+- This principle maintains that when the human mind (perceptual system) forms a percept or gestalt, the whole has a reality of its own, independent of the parts. 
+- 格式塔学派主张人脑的运作原理是整体的，“整体不同于其部件的总和”。例如，我们对一朵花的感知，并非纯粹单单从对花的形状、颜色、大小等感官资讯而来，还包括我们对花过去的经验和印象，加起来才是我们对一朵花的感知.
+
+#
+==
+###System Usability Scale
+In systems engineering, the system usability scale (SUS) is a simple, ten-item attitude Likert scale giving a global view of subjective assessments of usability. It was developed by John Brooke.
+
+###Likert scale
+is a psychometric scale commonly involved in research that employs questionnaires. It is the most widely used approach to scaling responses in survey research, such that the term is often used interchangeably with rating scale, or more accurately the Likert-type scale, even though the two are not synonymous. The scale is named after its inventor, psychologist Rensis Likert.
+
+![example: Likert Scale](https://upload.wikimedia.org/wikipedia/commons/c/cc/Example_Likert_Scale.svg)
 
