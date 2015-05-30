@@ -68,8 +68,7 @@ public class RegisterController {
         mobile = Integer.parseInt(mobileField.getText());
         pass = passwordField.getText();
         email = emailField.getText();
-        return Query.addUser(
-                email, firstname, surname, mobile, pass);
+        return Query.addUser(email, firstname, surname, mobile, pass);
     }
 
     /**

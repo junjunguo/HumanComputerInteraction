@@ -29,7 +29,6 @@ public class ViewController implements Initializable {
     private Appointment deletedApppointment;
     @FXML private ListView listView;
 
-
     public ViewController() {
         deletedAppointmentIndex = 0;
         //        deletedApppointment = new Appointment();

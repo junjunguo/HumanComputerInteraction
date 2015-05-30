@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /** Created by GuoJunjun <junjunguo.com> on 27/02/15. */
 
@@ -12,17 +14,13 @@ public class Query {
     public static String addUser(
             String email, String firstname, String surname, int mobile, String pass) {
 
+
         if (CheckUser.userExist(email)) {
             return "userID: " + email + "already registered";
         }
         String query = " insert into user (email,firstname, surname, mobile, pass)  values (?, ?, ?, ?, ?)";
 
-        //        Statement st;
-        //        ResultSet rs;
         try {
-            //            st = ConnectMysql.getConnection().createStatement();
-            //            rs = st.executeQuery(query);
-
             // create the mysql insert prepared statement
             PreparedStatement preparedStmt = ConnectMysql.getConnection().prepareStatement(query);
             preparedStmt.setString(1, email);
@@ -38,7 +36,6 @@ public class Query {
             return "succeed";
         } catch (Exception e) {
             return "add user exception!" + e.getMessage();
-            // System.err.println("add user exception!" + e.getMessage());
         }
     }
 
@@ -84,6 +81,30 @@ public class Query {
             System.out.println("error at getUserName: " + e);
         }
         return "ERROR";
+    }
+
+    /**
+     * @return all appointments
+     */
+    public static List getAllAppointments() {
+        String query = " SELECT * FROM roomcalendar";
+        Statement st;
+        ResultSet rs;
+        ArrayList<Appointment> appointments = new ArrayList<Appointment>();
+        try {
+            st = ConnectMysql.getConnection().createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                Appointment appointment = new Appointment();
+                // ??
+                appointments.add(appointment);
+            }
+            st.close();
+            return appointments;
+        } catch (SQLException e) {
+            System.out.println("error at getUserName: " + e);
+        }
+        return null;
     }
 
 

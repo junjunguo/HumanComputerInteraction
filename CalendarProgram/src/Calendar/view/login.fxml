@@ -28,7 +28,8 @@
                        GridPane.valignment="CENTER"/>
                 <Label styleClass="sectionTitle" text="Calendar" GridPane.halignment="CENTER"
                        GridPane.valignment="CENTER"/>
-                <Button mnemonicParsing="false" onAction="#loginOnclick" prefHeight="40.0" prefWidth="200.0"
+                <Button fx:id="loginbtn" mnemonicParsing="false" onAction="#loginOnclick" prefHeight="40.0"
+                        prefWidth="200.0"
                         text="Login" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER"/>
                 <Button mnemonicParsing="false" onAction="#registerOnClick" prefHeight="40.0" prefWidth="200.0"
                         text="Register" GridPane.rowIndex="5"/>
